@@ -10,3 +10,4 @@ public:
 	void setIngresos(int ing);
 	
 };
+
