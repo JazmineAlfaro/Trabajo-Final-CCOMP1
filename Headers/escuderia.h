@@ -1,22 +1,22 @@
 class Persona;
+class Piloto;
 class Patrocinadores;
 class Car;
 class Escuderia{
 private:
-	//Persona *Pilotos; //puntero a array de pilotos
-	//int numPilotos;
+	Piloto *Pilotos; //puntero a array de pilotos
+	int numPilotos;
 	Patrocinadores *Sponsors; //puntero a array de Sponsors
 	int numSponsors;
 	char* name;
-	Persona JefeDeIngenieros();
+	//Persona jefeDeIngenieros;
 	//Persona *Mecanicos; //puntero a array de Mecanicos
 	//int numMecanicos;
-	Car Carro();
-	//agregar mas miembros privados
+	Car carro;
 public:
 	Escuderia();
 	//Escuderia(Persona Drivers[], int numP, Patrocinadores Pat[], int numS, char* neim, Persona Jefe, Persona Mecs[], int numM, Car car);
-	void setPilotos(Persona Driver);
+	void setPilotos(Piloto Driver);
 	void setSponsor(Patrocinadores Sponsor);
 	void setName(char* neim);
 	void setJefe(Persona Jefe);
@@ -26,5 +26,6 @@ public:
 	Persona getJefito();
 	Car getCarro();
 	Patrocinadores getSponsor(int pos);
+	Piloto getPiloto(int pos);
 	
 };
