@@ -3,6 +3,7 @@ class Persona{
 protected:
 	char* name;
 	//string name;
+	char* lastname;
 	int age;
 	char* country; //nationality
 	//string country;
@@ -23,6 +24,9 @@ public:
 	void setCountry(char* contri);
 	//void setCountry(string contri);
 	void setSex(char sexo);
+	void setLastName(char* apellido);
 	void printSex();
+	char* getLastName();
 	
 };
+
