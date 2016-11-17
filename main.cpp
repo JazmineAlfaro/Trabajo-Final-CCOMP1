@@ -7,6 +7,7 @@
 #include "patrocinadores.h"
 #include "escuderia.h"
 #include "piloto.h"
+#include "databaseask.h"
 using namespace std;
 vector<Persona> storePersona; //guardar personas
 vector<Car> storeCar; //guardar carros
@@ -14,83 +15,12 @@ vector<Patrocinadores> storeSponsor; //guardar Patrocinadores
 vector<Escuderia> storeEscuderia; //guardar escuderia
 vector<Piloto> storePiloto;	//guardar pilotos
 
-int numPersonas = 0;
-int numCarros = 0;
-int numSponsors = 0;
-int numEscuderias = 0;
-int numPilotos = 0;
-//PERSONA
-
-char* askName(){
-	char *myName;
-	myName = new char[20];
-	cout << "Ingrese un nombre: " << endl;
-	cin >> myName;
-	return myName;
-}
-char* askLName(){
-	char *myLName;
-	myLName = new char[20];
-	cout << "Ingrese su apellido: " << endl;
-	cin >> myLName;
-	return myLName;
-}
-int askAge(){
-	int myAge;
-	cout << "Ingrese su edad: " << endl;
-	cin >> myAge;
-	return myAge;
-}
-char askSex(){
-	char mySex;
-	cout << "Ingrese su sexo (un caracter): " << endl;
-	cin >> mySex;
-	return mySex;
-}
-char* askCountry(){
-	char *myCountry;
-	myCountry = new char[30];
-	cout << "Ingrese un pais: " << endl;
-	cin >> myCountry;
-	return myCountry;
-}
-//CHAU PERSONA
-//Piloto
-int askPoints(){
-	int points;
-	cout << "Ingrese los puntos: " << endl;
-	cin >> points;
-	return points;
-}
-int askPay(){
-	int myPay;
-	cout << "Ingrese la paga: " << endl;
-	cin >> myPay;
-	return myPay;
-}
-int askNumber(){
-	int myNumber;
-	cout << "Ingrese el numero: " << endl;
-	cin >> myNumber;
-	return myNumber;
-}
-//CHAU PILOTO
-//Carro
-char* askEngine(){
-	char *myEngine;
-	cout << "Ingrese la marca del motor: " << endl;
-	myEngine = new char[15];
-	cin>>myEngine;
-	return myEngine;
-}
-//CHAU CARRO
-//SPONSOR
-int askIngresos(){
-	int myIngresos;
-	cout << "Los ingresos generados son: " << endl;
-	cin >> myIngresos;
-	return myIngresos;
-}
+static int numPersonas = 0;
+static int numCarros = 0;
+static int numSponsors = 0;
+static int numEscuderias = 0;
+static int numPilotos = 0;
+//Database myDB;
 //instrucciones originales
 void instrucciones(){
 	cout << "Oprima los numeros segun lo que desee hacer." << endl;
@@ -144,12 +74,13 @@ void menu2(){
 void menuIngPer(){
 	instruccionesIngPer();
 	Persona newPersona;
+	DatabaseAsk myDB;
 	char* name;
-	name = askName();
-	char* lname = askLName();
-	int age = askAge();
-	char sex = askSex();
-	char* country = askCountry();
+	name = myDB.askName();
+	char* lname = myDB.askLName();
+	int age = myDB.askAge();
+	char sex = myDB.askSex();
+	char* country = myDB.askCountry();
 	newPersona.setAge(age);
 	newPersona.setCountry(country);
 	newPersona.setName(name);
@@ -169,16 +100,17 @@ void instruccionesIngPil(){
 void menuIngPil(){
 	instruccionesIngPil();
 	Piloto newPiloto;
+	DatabaseAsk myDB;
 	char* name;
-	name = askName();
+	name = myDB.askName();
 	char* lname;
-	lname = askLName();
-	int age = askAge();
-	char sex = askSex();
-	char* country = askCountry();
-	int points = askPoints();
-	int pay = askPay();
-	int number = askNumber();
+	lname = myDB.askLName();
+	int age = myDB.askAge();
+	char sex = myDB.askSex();
+	char* country = myDB.askCountry();
+	int points = myDB.askPoints();
+	int pay = myDB.askPay();
+	int number = myDB.askNumber();
 	newPiloto.setAge(age);
 	newPiloto.setCountry(country);
 	newPiloto.setLastName(lname);
@@ -198,8 +130,9 @@ void instruccionesIngCoc(){
 void menuIngCoc(){
 	instruccionesIngCoc();
 	Car newCar;
-	char* myName = askName();
-	char* myEngine = askEngine();
+	DatabaseAsk myDB;
+	char* myName = myDB.askName();
+	char* myEngine = myDB.askEngine();
 	newCar.setEngine(myEngine);
 	newCar.setName(myName);
 	numCarros++;
@@ -207,8 +140,6 @@ void menuIngCoc(){
 	seleccionmenu1();
 }
 /*ingresar escuderias
-
-
 */
 
 void instruccionesIngSpon(){
@@ -219,8 +150,9 @@ void instruccionesIngSpon(){
 void menuIngSpon(){
 	instruccionesIngSpon();
 	Patrocinadores newSponsor;
-	char* myName = askName();
-	int myIngresos = askIngresos();
+	DatabaseAsk myDB;
+	char* myName = myDB.askName();
+	int myIngresos = myDB.askIngresos();
 	newSponsor.setIngresos(myIngresos);
 	newSponsor.setName(myName);
 	numSponsors++;
@@ -302,21 +234,22 @@ int seleccion(){
 void seleccionmenu1();
 //seleccionando en el primer menu
 void seleccionmenu2(); //seleccionando en el segundo menu -> visualizar datos 
+//opciones menu
 void seleccionar(int opc){
 	switch(opc){
-	case 1:
+	case 1: //ingresar
 		seleccionmenu1();
 		break;
-	case 2:
+	case 2: //visualizar
 		seleccionmenu2();
 		break;
-	case 3:
+	case 3: //modificar
 		;
 	break;
-	case 4:
+	case 4: //eliminar
 		;
 	break;
-	case 5:
+	case 5: //salir
 		exit(2604);
 	}
 }
@@ -326,27 +259,27 @@ void selecMenuIngPers();
 void selecMenuIngPil(); //Ingresar Pilotos
 void selecMenuIngCoc(); //Ingresar coches
 void selecMenuIngSpon(); //Ingresar sponsors
-void selecmenu1(int opc){ //menu 1 = modificar datos
+void selecmenu1(int opc){ //menu 1 = ingresar datos
 	switch(opc){
-	case 1:
+	case 1: //personas
 		selecMenuIngPers();
 		break;
-	case 2:
+	case 2: //pilotos
 		selecMenuIngPil();
 		break;
-	case 3:
+	case 3: //carros
 		selecMenuIngCoc();
 		break;
-	case 4:
+	case 4: //escuderias
 		;
 	break;
-	case 5:
+	case 5: //sponsors
 		selecMenuIngSpon();
 		break;
-	case 6:
+	case 6: //regresar
 		praseleccion();
 		break;
-	case 7:
+	case 7: //salir
 		exit(35);
 	}
 }
@@ -364,10 +297,10 @@ void selecmenu2(int opc){ //menu 2 = visualizar datos
 		break;
 	case 4:
 		getEscuderias();
-	break;
+		break;
 	case 5:
 		getPatrocinadores();
-	break;
+		break;
 	case 6:
 		praseleccion();
 		break;
