@@ -69,4 +69,22 @@ Piloto Escuderia::getPiloto(int pos){
 	return a[i-1];
 	delete [] a;
 }
-
+void Escuderia::imprimirSponsors(){
+	int i;
+	Patrocinadores G;
+	for (i = 0; i<numSponsors; i++){
+		cout << "Patrocinador " << i+1 << endl;
+		G = Sponsors[i];
+		cout << G.getName() << endl;
+	}
+	
+}
+void Escuderia::imprimirPilotos(){
+	int i;
+	Piloto G;
+	for(i=0;i<numPilotos; i++){
+		cout << "Piloto " << i+1 << endl;
+		G = Pilotos[i];
+		cout << G.getname() << endl;
+	}
+}
