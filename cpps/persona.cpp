@@ -5,17 +5,12 @@
 using namespace std;
 Persona::Persona(){
 	this->name = " ";
+	this->lastname = " ";
 	this->age = 0;
 	this->country = " ";
 	this->sex = 'N'; //undefined sex
 }
 
-/*Persona::Persona(char* neim, int eish, char* contri, char sexo){
-	this->name = neim;
-	this->age = eish;
-	this->country = contri;
-	this->sex = sexo;
-}*/
 //Persona::~Persona();
 int Persona::getAge(){ return age;}
 char* Persona::getname(){return name;}
@@ -37,6 +32,9 @@ void Persona::setCountry(char* contri){
 void Persona::setSex(char sexo){
 	this->sex = sexo;
 }
+void Persona::setLastName(char* apellido){
+	this->lastname = apellido;
+}
 void Persona::printSex(){
 	switch(sex){
 case 'N':
@@ -53,3 +51,4 @@ default:
 	break;
 	}
 }
+char* Persona::getLastName(){return lastname;}
