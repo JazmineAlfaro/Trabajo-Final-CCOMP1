@@ -27,5 +27,7 @@ public:
 	Car getCarro();
 	Patrocinadores getSponsor(int pos);
 	Piloto getPiloto(int pos);
+	void imprimirSponsors();
+	void imprimirPilotos();
 	
 };
