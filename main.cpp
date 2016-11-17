@@ -23,10 +23,17 @@ int numPilotos = 0;
 
 char* askName(){
 	char *myName;
-	myName = new char[50];
+	myName = new char[20];
 	cout << "Ingrese un nombre: " << endl;
 	cin >> myName;
 	return myName;
+}
+char* askLName(){
+	char *myLName;
+	myLName = new char[20];
+	cout << "Ingrese su apellido: " << endl;
+	cin >> myLName;
+	return myLName;
 }
 int askAge(){
 	int myAge;
@@ -49,6 +56,12 @@ char* askCountry(){
 }
 //CHAU PERSONA
 //Piloto
+int askPoints(){
+	int points;
+	cout << "Ingrese los puntos: " << endl;
+	cin >> points;
+	return points;
+}
 int askPay(){
 	int myPay;
 	cout << "Ingrese la paga: " << endl;
@@ -62,6 +75,22 @@ int askNumber(){
 	return myNumber;
 }
 //CHAU PILOTO
+//Carro
+char* askEngine(){
+	char *myEngine;
+	cout << "Ingrese la marca del motor: " << endl;
+	myEngine = new char[15];
+	cin>>myEngine;
+	return myEngine;
+}
+//CHAU CARRO
+//SPONSOR
+int askIngresos(){
+	int myIngresos;
+	cout << "Los ingresos generados son: " << endl;
+	cin >> myIngresos;
+	return myIngresos;
+}
 //instrucciones originales
 void instrucciones(){
 	cout << "Oprima los numeros segun lo que desee hacer." << endl;
@@ -117,20 +146,88 @@ void menuIngPer(){
 	Persona newPersona;
 	char* name;
 	name = askName();
-	//newPersona.setName(askName());
+	char* lname = askLName();
 	int age = askAge();
 	char sex = askSex();
 	char* country = askCountry();
-	//char* country = askCountry();
 	newPersona.setAge(age);
 	newPersona.setCountry(country);
 	newPersona.setName(name);
 	newPersona.setSex(sex);
+	newPersona.setLastName(lname);
 	numPersonas++;
 	storePersona.push_back(newPersona);
 	seleccionmenu1();
 }
 //lo q pide un numero
+void instruccionesIngPil(){
+	instruccionesIngPer();
+	cout << "Puntos (Poner 0 si no hay puntos)" << endl;
+	cout << "Paga" << endl;
+	cout << "Numero" << endl;
+}
+void menuIngPil(){
+	instruccionesIngPil();
+	Piloto newPiloto;
+	char* name;
+	name = askName();
+	char* lname;
+	lname = askLName();
+	int age = askAge();
+	char sex = askSex();
+	char* country = askCountry();
+	int points = askPoints();
+	int pay = askPay();
+	int number = askNumber();
+	newPiloto.setAge(age);
+	newPiloto.setCountry(country);
+	newPiloto.setLastName(lname);
+	newPiloto.setName(name);
+	newPiloto.setNumber(number);
+	newPiloto.setPay(pay);
+	newPiloto.setSex(sex);
+	numPilotos++;
+	storePiloto.push_back(newPiloto);
+	seleccionmenu1();
+}
+void instruccionesIngCoc(){
+	cout << "Recuerde que un carro debe tener las siguientes características: " << endl;
+	cout << "Nombre " << endl;
+	cout << "Motor " << endl;
+}
+void menuIngCoc(){
+	instruccionesIngCoc();
+	Car newCar;
+	char* myName = askName();
+	char* myEngine = askEngine();
+	newCar.setEngine(myEngine);
+	newCar.setName(myName);
+	numCarros++;
+	storeCar.push_back(newCar);
+	seleccionmenu1();
+}
+/*ingresar escuderias
+
+
+*/
+
+void instruccionesIngSpon(){
+	cout << "Recuerde que un patrocinador debe tener las siguientes caracteristicas: " << endl;
+	cout << "Nombre " << endl;
+	cout << "Ingresos " << endl;
+}
+void menuIngSpon(){
+	instruccionesIngSpon();
+	Patrocinadores newSponsor;
+	char* myName = askName();
+	int myIngresos = askIngresos();
+	newSponsor.setIngresos(myIngresos);
+	newSponsor.setName(myName);
+	numSponsors++;
+	storeSponsor.push_back(newSponsor);
+	seleccionmenu1();
+	
+}
 void seleccionmenu2();
 void getPersonas(){
 	int i;
@@ -151,10 +248,48 @@ void getPilotos(){
 	for(i=0; i<numPilotos; i++){
 		Get = storePiloto[i];
 		cout << "Piloto " << i+1 << endl;
-		cout << "Nombre: " << Get.getname() << endl;
+		cout << "Nombre: " << Get.getname() << " " << Get.getLastName() << endl;
 		cout << "Edad: " << Get.getAge() << endl;
 		Get.printSex();
 		cout << "Pais: " << Get.getCountry() << endl;
+		cout << "Puntos: " << Get.getPoints() << endl;
+		cout << "Puntos de la licencia: " << Get.getLPoints() << endl;
+		cout << "Paga: " << Get.getPay() << endl;
+		cout << "Numero: " << Get.getNumber() << endl;
+	}
+	seleccionmenu2();
+}
+void getCarros(){
+	int i;
+	Car Get;
+	for (i = 0; i<numCarros; i++){
+		Get = storeCar[i];
+		cout << "Carro " << i+1 << endl;
+		cout << "Nombre: " << Get.getName() << endl;
+		cout << "Motor: " << Get.getEngine() << endl;
+	}
+	seleccionmenu2();
+}
+void getEscuderias(){
+	int i;
+	Escuderia Get;
+	for(i=0; i<numEscuderias; i++){
+		Get = storeEscuderia[i];
+		cout << "Escuderia " << i+1 << endl;
+		cout << "Nombre: " << Get.getName() << endl;
+		Get.imprimirPilotos();
+		Get.imprimirSponsors();
+	}
+	seleccionmenu2();
+}
+void getPatrocinadores(){
+	int i;
+	Patrocinadores Get;
+	for(i = 0; i<numSponsors; i++){
+		Get = storeSponsor[i];
+		cout << "Patrocinador " << i+1 << endl;
+		cout << "Nombre: " << Get.getName() << endl;
+		cout << "Ingresos: " << Get.getIngresos() << endl;
 	}
 	seleccionmenu2();
 }
@@ -177,10 +312,10 @@ void seleccionar(int opc){
 		break;
 	case 3:
 		;
-		break;
+	break;
 	case 4:
 		;
-		break;
+	break;
 	case 5:
 		exit(2604);
 	}
@@ -188,21 +323,25 @@ void seleccionar(int opc){
 void praseleccion(); //declarando funcion praseleccion 
 //menu 1: ingresando personas
 void selecMenuIngPers();
+void selecMenuIngPil(); //Ingresar Pilotos
+void selecMenuIngCoc(); //Ingresar coches
+void selecMenuIngSpon(); //Ingresar sponsors
 void selecmenu1(int opc){ //menu 1 = modificar datos
 	switch(opc){
 	case 1:
 		selecMenuIngPers();
 		break;
 	case 2:
-		;
+		selecMenuIngPil();
 		break;
 	case 3:
-		;
+		selecMenuIngCoc();
+		break;
 	case 4:
 		;
-		break;
+	break;
 	case 5:
-		;
+		selecMenuIngSpon();
 		break;
 	case 6:
 		praseleccion();
@@ -221,14 +360,14 @@ void selecmenu2(int opc){ //menu 2 = visualizar datos
 		getPilotos();
 		break;
 	case 3:
-		;
+		getCarros();
 		break;
 	case 4:
-		;
-		break;
+		getEscuderias();
+	break;
 	case 5:
-		;
-		break;
+		getPatrocinadores();
+	break;
 	case 6:
 		praseleccion();
 		break;
@@ -237,27 +376,7 @@ void selecmenu2(int opc){ //menu 2 = visualizar datos
 	}
 }
 //seleccion menu ingreso de personas -> 6 opciones
-/*void selecmenuIngPer(int opc){
-	switch(opc){
-	case 1: //ingresar nombre
-		;
-		break;
-	case 2: //ingresar sexo
-		;
-		break;
-	case 3: //ingresar edad
-		;
-		break;
-	case 4: //ingresar nacionalidad
-		;
-		break;
-	case 5: //volver al menu anterior
-		seleccionmenu1();
-		break;
-	case 6: //salir 
-		exit(28);
-	}
-}*/
+
 void praseleccion(){
 	menu();
 	int i = seleccion();
@@ -274,6 +393,15 @@ void seleccionmenu1(){
 //para seleccionar menu->1->1
 void selecMenuIngPers(){
 	menuIngPer();
+}
+void selecMenuIngPil(){
+	menuIngPil();
+}
+void selecMenuIngCoc(){
+	menuIngCoc();
+}
+void selecMenuIngSpon(){
+	menuIngSpon();
 }
 void seleccionmenu2(){
 	menu2();
