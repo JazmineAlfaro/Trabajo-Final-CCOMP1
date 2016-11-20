@@ -8,19 +8,9 @@
 #include "escuderia.h"
 #include "piloto.h"
 #include "databaseask.h"
+#include "database.h"
 using namespace std;
-vector<Persona> storePersona; //guardar personas
-vector<Car> storeCar; //guardar carros
-vector<Patrocinadores> storeSponsor; //guardar Patrocinadores
-vector<Escuderia> storeEscuderia; //guardar escuderia
-vector<Piloto> storePiloto;	//guardar pilotos
-
-static int numPersonas = 0;
-static int numCarros = 0;
-static int numSponsors = 0;
-static int numEscuderias = 0;
-static int numPilotos = 0;
-//Database myDB;
+Database DB;
 //instrucciones originales
 void instrucciones(){
 	cout << "Oprima los numeros segun lo que desee hacer." << endl;
@@ -73,21 +63,7 @@ void menu2(){
 }
 void menuIngPer(){
 	instruccionesIngPer();
-	Persona newPersona;
-	DatabaseAsk myDB;
-	char* name;
-	name = myDB.askName();
-	char* lname = myDB.askLName();
-	int age = myDB.askAge();
-	char sex = myDB.askSex();
-	char* country = myDB.askCountry();
-	newPersona.setAge(age);
-	newPersona.setCountry(country);
-	newPersona.setName(name);
-	newPersona.setSex(sex);
-	newPersona.setLastName(lname);
-	numPersonas++;
-	storePersona.push_back(newPersona);
+	DB.menuIngrPer();
 	seleccionmenu1();
 }
 //lo q pide un numero
@@ -99,27 +75,7 @@ void instruccionesIngPil(){
 }
 void menuIngPil(){
 	instruccionesIngPil();
-	Piloto newPiloto;
-	DatabaseAsk myDB;
-	char* name;
-	name = myDB.askName();
-	char* lname;
-	lname = myDB.askLName();
-	int age = myDB.askAge();
-	char sex = myDB.askSex();
-	char* country = myDB.askCountry();
-	int points = myDB.askPoints();
-	int pay = myDB.askPay();
-	int number = myDB.askNumber();
-	newPiloto.setAge(age);
-	newPiloto.setCountry(country);
-	newPiloto.setLastName(lname);
-	newPiloto.setName(name);
-	newPiloto.setNumber(number);
-	newPiloto.setPay(pay);
-	newPiloto.setSex(sex);
-	numPilotos++;
-	storePiloto.push_back(newPiloto);
+	DB.menuIngrPil();
 	seleccionmenu1();
 }
 void instruccionesIngCoc(){
@@ -129,19 +85,23 @@ void instruccionesIngCoc(){
 }
 void menuIngCoc(){
 	instruccionesIngCoc();
-	Car newCar;
-	DatabaseAsk myDB;
-	char* myName = myDB.askName();
-	char* myEngine = myDB.askEngine();
-	newCar.setEngine(myEngine);
-	newCar.setName(myName);
-	numCarros++;
-	storeCar.push_back(newCar);
+	DB.menuIngrCoc();
 	seleccionmenu1();
 }
 /*ingresar escuderias
 */
-
+void instruccionesIngEsc(){
+	cout << "Recuerde que una escuderia debe tener las siguientes características: " << endl;
+	cout << "Nombre" << endl;
+	cout << "Pilotos" << endl;
+	cout << "Patrocinadores" << endl;
+	cout << "Y estos ya deben haber sido ingresados" << endl;
+}
+void menuIngEsc(){
+	instruccionesIngEsc();
+	DB.menuIngrEsc();
+	seleccionmenu1();
+}
 void instruccionesIngSpon(){
 	cout << "Recuerde que un patrocinador debe tener las siguientes caracteristicas: " << endl;
 	cout << "Nombre " << endl;
@@ -149,80 +109,28 @@ void instruccionesIngSpon(){
 }
 void menuIngSpon(){
 	instruccionesIngSpon();
-	Patrocinadores newSponsor;
-	DatabaseAsk myDB;
-	char* myName = myDB.askName();
-	int myIngresos = myDB.askIngresos();
-	newSponsor.setIngresos(myIngresos);
-	newSponsor.setName(myName);
-	numSponsors++;
-	storeSponsor.push_back(newSponsor);
+	DB.menuIngrSpon();
 	seleccionmenu1();
-	
 }
 void seleccionmenu2();
 void getPersonas(){
-	int i;
-	Persona Get;
-	for(i = 0; i<numPersonas; i++){
-		Get = storePersona[i];
-		cout << "Persona " << i+1 << endl;
-		cout << "Nombre: " << Get.getname() << endl;
-		cout << "Edad: " << Get.getAge() << endl;
-		Get.printSex();
-		cout << "Pais: " << Get.getCountry() << endl;
-	}
+	DB.getPersona();
 	seleccionmenu2();
 }
 void getPilotos(){
-	int i;
-	Piloto Get;
-	for(i=0; i<numPilotos; i++){
-		Get = storePiloto[i];
-		cout << "Piloto " << i+1 << endl;
-		cout << "Nombre: " << Get.getname() << " " << Get.getLastName() << endl;
-		cout << "Edad: " << Get.getAge() << endl;
-		Get.printSex();
-		cout << "Pais: " << Get.getCountry() << endl;
-		cout << "Puntos: " << Get.getPoints() << endl;
-		cout << "Puntos de la licencia: " << Get.getLPoints() << endl;
-		cout << "Paga: " << Get.getPay() << endl;
-		cout << "Numero: " << Get.getNumber() << endl;
-	}
+	DB.getPiloto();
 	seleccionmenu2();
 }
 void getCarros(){
-	int i;
-	Car Get;
-	for (i = 0; i<numCarros; i++){
-		Get = storeCar[i];
-		cout << "Carro " << i+1 << endl;
-		cout << "Nombre: " << Get.getName() << endl;
-		cout << "Motor: " << Get.getEngine() << endl;
-	}
+	DB.getCarro();
 	seleccionmenu2();
 }
 void getEscuderias(){
-	int i;
-	Escuderia Get;
-	for(i=0; i<numEscuderias; i++){
-		Get = storeEscuderia[i];
-		cout << "Escuderia " << i+1 << endl;
-		cout << "Nombre: " << Get.getName() << endl;
-		Get.imprimirPilotos();
-		Get.imprimirSponsors();
-	}
+	DB.getEscuderia();
 	seleccionmenu2();
 }
 void getPatrocinadores(){
-	int i;
-	Patrocinadores Get;
-	for(i = 0; i<numSponsors; i++){
-		Get = storeSponsor[i];
-		cout << "Patrocinador " << i+1 << endl;
-		cout << "Nombre: " << Get.getName() << endl;
-		cout << "Ingresos: " << Get.getIngresos() << endl;
-	}
+	DB.getSponsor();
 	seleccionmenu2();
 }
 int seleccion(){
@@ -258,6 +166,7 @@ void praseleccion(); //declarando funcion praseleccion
 void selecMenuIngPers();
 void selecMenuIngPil(); //Ingresar Pilotos
 void selecMenuIngCoc(); //Ingresar coches
+void selecMenuIngEsc(); //Ingresar escuderias
 void selecMenuIngSpon(); //Ingresar sponsors
 void selecmenu1(int opc){ //menu 1 = ingresar datos
 	switch(opc){
@@ -271,7 +180,7 @@ void selecmenu1(int opc){ //menu 1 = ingresar datos
 		selecMenuIngCoc();
 		break;
 	case 4: //escuderias
-		;
+		selecMenuIngEsc();
 	break;
 	case 5: //sponsors
 		selecMenuIngSpon();
@@ -287,18 +196,33 @@ void prasaleccion();
 void selecmenu2(int opc){ //menu 2 = visualizar datos
 	switch(opc){
 	case 1:
+		if(DB.getNumPersonas()==0){
+			cout<<"No hay datos para visualizar"<<endl;
+		}
 		getPersonas();
 		break;
 	case 2:
+		if(DB.getNumPilotos()==0){
+			cout<<"No hay datos para visualizar"<<endl;
+		}
 		getPilotos();
 		break;
 	case 3:
+		if(DB.getNumCarros()==0){
+			cout<<"No hay datos para visualizar"<<endl;
+		}
 		getCarros();
 		break;
 	case 4:
+		if(DB.getNumEscuderias()==0){
+			cout<<"No hay datos para visualizar"<<endl;
+		}
 		getEscuderias();
 		break;
 	case 5:
+		if(DB.getNumSpon()==0){
+			cout<<"No hay datos para visualizar"<<endl;
+		}
 		getPatrocinadores();
 		break;
 	case 6:
@@ -333,6 +257,9 @@ void selecMenuIngPil(){
 void selecMenuIngCoc(){
 	menuIngCoc();
 }
+void selecMenuIngEsc(){
+	menuIngEsc();
+}
 void selecMenuIngSpon(){
 	menuIngSpon();
 }
@@ -341,9 +268,8 @@ void seleccionmenu2(){
 	int i = seleccion();
 	selecmenu2(i);
 }
-int main () {
+int main (){
 	praseleccion();
 	return 0;
 }
 
-//hacer lo de pilotos
