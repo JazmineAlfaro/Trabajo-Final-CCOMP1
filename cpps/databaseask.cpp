@@ -37,8 +37,8 @@ char* DatabaseAsk::askCountry(){
 	cin>>name;
 	return name;
 }
-	//CHAU PERSONA
-	//Piloto
+//CHAU PERSONA
+//Piloto
 int DatabaseAsk::askPoints(){
 	int points;
 	cout<<"Ingrese sus puntos(si no hay ingrese 0): "<<endl;
@@ -53,24 +53,24 @@ int DatabaseAsk::askPay(){
 }
 int DatabaseAsk::askNumber(){
 	int number;
-	cout<<"Ingrese su numero: "<<endl;
+	cout<<"Ingrese un numero: "<<endl;
 	cin>>number;
 	return number;
-
+	
 }
 
-	//CHAU PILOTO
-	//Carro
+//CHAU PILOTO
+//Carro
 char* DatabaseAsk::askEngine(){
 	char *engine;
-	name = new char[10];
+	engine = new char[10];
 	cout<<"Ingrese su motor: "<<endl;
 	cin>>engine;
 	return engine;
 }
-				
-	//CHAU CARRO
-	//SPONSOR
+
+//CHAU CARRO
+//SPONSOR
 int DatabaseAsk::askIngresos(){
 	int ingresos;
 	cout<<"Ingrese sus ingresos: "<<endl;
