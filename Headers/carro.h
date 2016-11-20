@@ -1,4 +1,4 @@
-class Car{ //clase hija de piloto
+class Car{
 private:
 	char* name;
 	char* engine;
@@ -8,5 +8,6 @@ public:
 	void setEngine(char* eng);
 	char* getName();
 	char* getEngine();
+	void imprimirCarro();
 	
 };
