@@ -5,9 +5,9 @@ class Car;
 class Escuderia{
 private:
 	Piloto *Pilotos; //puntero a array de pilotos
-	int numPilotos;
+	int numPilotoss;
 	Patrocinadores *Sponsors; //puntero a array de Sponsors
-	int numSponsors;
+	int numSponsorss;
 	char* name;
 	//Persona jefeDeIngenieros;
 	//Persona *Mecanicos; //puntero a array de Mecanicos
