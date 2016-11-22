@@ -53,7 +53,7 @@ int DatabaseAsk::askPay(){
 }
 int DatabaseAsk::askNumber(){
 	int number;
-	cout<<"Ingrese un numero: "<<endl;
+	cout<<"Ingrese el numero: "<<endl;
 	cin>>number;
 	return number;
 	
