@@ -16,19 +16,18 @@ int Database::numCarros = 0;
 int Database::numSponsors = 0;
 int Database::numEscuderias = 0;
 int Database::numPilotos = 0;
-
+vector<Persona> hola;
+vector<Car> hola1;
+vector<Patrocinadores> hola2;
+vector<Escuderia> hola3;
+vector<Piloto> hola4;
+vector<Persona> Database::storePersona = hola;
+vector<Car> Database::storeCar =  hola1;
+vector<Patrocinadores> Database::storeSponsor = hola2;
+vector<Escuderia> Database::storeEscuderia = hola3;
+vector<Piloto> Database::storePiloto = hola4;
 Database::Database(){
-	vector<Persona> hola;
-	vector<Car> hola1;
-	vector<Patrocinadores> hola2;
-	vector<Escuderia> hola3;
-	vector<Piloto> hola4;
 	DatabaseAsk Test;
-	this->storePersona = hola;
-	this->storeCar = hola1;
-	this->storeSponsor = hola2;
-	this->storeEscuderia = hola3;
-	this->storePiloto = hola4;
 	this->myDB = Test;
 }
 void Database::instEscudCar(){
@@ -164,45 +163,70 @@ void Database::menuIngrEsc(){
 	char* myName = myDB.askName();
 	getCarro();
 	i = myDB.askNumber();
-	if (i == 0){
-		;
+	if ((i == 0) || (i>numCarros)){
+		cout << "Ingrese un numero valido." << endl;
+		i = myDB.askNumber();
 	} else if (i <= numCarros){
 		newEscuderia.setCarro(storeCar[i-1]); 
-	} else if (i > numCarros){
+	}
+	do{
+	getSponsor();
+	i = myDB.askNumber();
+	if ((i == 0)||(i>numSponsors)){
 		cout << "Ingrese un numero valido." << endl;
 		i = myDB.askNumber();
-	}
-    getSponsor();
-	i = myDB.askNumber();
-	if (i == 0){
-		;
 	} else if (i<= numSponsors){
 		newEscuderia.setSponsor(storeSponsor[i-1]);
-	} else if (i>numSponsors){
-		cout << "Ingrese un numero valido." << endl;
-		i = myDB.askNumber();
 	}
+	}while(ingresarMas());
+	do{
 	getPiloto();
 	i = myDB.askNumber();
-	if (i == 0){
-		;
-	} else if (i <= numPilotos) {
-		newEscuderia.setPilotos(storePiloto[i-1]);
-	} else if (i > numPilotos) {
+	if ((i == 0)||(i>numPilotos)){
 		cout << "Ingrese un numero valido." << endl;
 		i = myDB.askNumber();
+	} else if (i <= numPilotos) {
+		newEscuderia.setPilotos(storePiloto[i-1]);
 	}
+	}while(ingresarMas());
 	numEscuderias++;
-	storeEscuderia.push_back(newEscuderia); //Agregar el booleano que pregunta si quieres agregar mas datos
+	storeEscuderia.push_back(newEscuderia); //Agregar el booleano que pregunta si quieres agregar mas datos CHECK
 }
 void Database::getEscuderia(){
 	int i;
 	Escuderia Get;
+	Car Carro;
 	for(i=0; i<numEscuderias; i++){
 		Get = storeEscuderia[i];
 		cout << "Escuderia " << i+1 << endl;
 		cout << "Nombre: " << Get.getName() << endl;
 		Get.imprimirPilotos();
-		Get.imprimirSponsors();                           
+		Get.imprimirSponsors();
+		Carro = Get.getCarro();
+		Carro.imprimirCarro();
 	}
+}
+Persona Database::getPersonaVector(int i){
+	return this->storePersona[i];
+}
+void Database::modificarPersonaVector(Persona P, int i){
+	storePersona.at(i) = P;
+}
+Piloto Database::getPilotoVector(int i){
+	return this->storePiloto[i];
+}
+void Database::modificarPilotoVector(Piloto P, int i){
+	storePiloto.at(i) = P;
+}
+Car Database::getCarVector(int i){
+	return this->storeCar.at(i);
+}
+void Database::modificarCarVector(Car C, int i){
+	storeCar.at(i) = C;
+}
+Patrocinadores Database::getSponsorVector(int i){
+	return this->storeSponsor.at(i);
+}
+void Database::modificarSponsorVector(Patrocinadores P, int i){
+	storeSponsor.at(i) = P;
 }
