@@ -8,11 +8,11 @@ private:
 	static int numSponsors;
 	static int numEscuderias;
 	static int numPilotos;
-	vector<Persona> storePersona; //guardar personas
-	vector<Car> storeCar; //guardar carros
-	vector<Patrocinadores> storeSponsor; //guardar Patrocinadores
-	vector<Escuderia> storeEscuderia; //guardar escuderia
-	vector<Piloto> storePiloto;	//guardar pilotos
+	static vector<Persona> storePersona; //guardar personas
+	static vector<Car> storeCar; //guardar carros
+	static vector<Patrocinadores> storeSponsor; //guardar Patrocinadores
+	static vector<Escuderia> storeEscuderia; //guardar escuderia
+	static vector<Piloto> storePiloto;	//guardar pilotos
 	DatabaseAsk myDB;
 public:
 	Database();
@@ -35,4 +35,12 @@ public:
 	int getNumEscuderias();
 	void menuIngrEsc();
 	void getEscuderia();
+	Persona getPersonaVector(int i);
+	void modificarPersonaVector(Persona P, int i);
+	Piloto getPilotoVector(int i);
+	void modificarPilotoVector(Piloto P, int i);
+	Car getCarVector(int i);
+	void modificarCarVector(Car C, int i);
+	Patrocinadores getSponsorVector(int i);
+	void modificarSponsorVector(Patrocinadores P, int i);
 };
