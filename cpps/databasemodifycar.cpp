@@ -13,7 +13,7 @@
 
 int DatabaseModifyCar::chooseCars(){
 	Database H; int i;
-	H.getPiloto();
+	H.getCarro();
 	cout << "Ingrese el numero del carro que desea modificar: " << endl;
 	cin >> i;
 	return i;
