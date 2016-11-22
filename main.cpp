@@ -9,8 +9,16 @@
 #include "piloto.h"
 #include "databaseask.h"
 #include "database.h"
+#include "databasemodifyper.h"
+#include "databasemodifypil.h"
+#include "databasemodifycar.h"
+#include "databasemodifyspon.h"
 using namespace std;
 Database DB;
+DatabaseModifyPer Per;
+DatabaseModifyPil Pil;
+DatabaseModifyCar Carro;
+DatabaseModifySpon Spon;
 //instrucciones originales
 void instrucciones(){
 	cout << "Oprima los numeros segun lo que desee hacer." << endl;
@@ -20,8 +28,8 @@ void menu(){
 	instrucciones();
 	cout << 1 << " para ingresar datos" << endl;
 	cout << 2 << " para visualizar datos" << endl;
-	cout << 3 << " para eliminar datos" << endl;
-	cout << 4 << " para modificar datos" << endl;
+	cout << 3 << " para modificar datos" << endl;
+	cout << 4 << " para eliminar datos" << endl;
 	cout << 5 << " para salir de la base de datos" << endl;
 }
 //instrucciones al apretar 1 por primera vez
@@ -58,6 +66,19 @@ void menu2(){
 	cout << 3 << " para visualizar coches" << endl;
 	cout << 4 << " para visualizar escuderias" << endl;
 	cout << 5 << " para visualizar patrocinadores" << endl;
+	cout << 6 << " para regresar al menu anterior" << endl;
+	cout << 7 << " para salir de la base de datos" << endl;
+}
+void instrucciones3(){
+	cout << "Oprima los numeros segun lo que desee modificar." << endl;
+}
+void menu3(){
+	instrucciones3();
+	cout << 1 << " para modificar personas" << endl;
+	cout << 2 << " para modificar pilotos" << endl;
+	cout << 3 << " para modificar coches" << endl;
+	cout << 4 << " para modificar escuderias" << endl;
+	cout << 5 << " para modificar patrocinadores" << endl;
 	cout << 6 << " para regresar al menu anterior" << endl;
 	cout << 7 << " para salir de la base de datos" << endl;
 }
@@ -141,7 +162,8 @@ int seleccion(){
 }
 void seleccionmenu1();
 //seleccionando en el primer menu
-void seleccionmenu2(); //seleccionando en el segundo menu -> visualizar datos 
+void seleccionmenu2(); //seleccionando en el segundo menu -> visualizar datos
+void seleccionmenu3(); //seleccionando en el tercer menu -> modificar datos
 //opciones menu
 void seleccionar(int opc){
 	switch(opc){
@@ -152,7 +174,7 @@ void seleccionar(int opc){
 		seleccionmenu2();
 		break;
 	case 3: //modificar
-		;
+		seleccionmenu3();
 	break;
 	case 4: //eliminar
 		;
@@ -181,7 +203,7 @@ void selecmenu1(int opc){ //menu 1 = ingresar datos
 		break;
 	case 4: //escuderias
 		selecMenuIngEsc();
-	break;
+		break;
 	case 5: //sponsors
 		selecMenuIngSpon();
 		break;
@@ -233,7 +255,49 @@ void selecmenu2(int opc){ //menu 2 = visualizar datos
 	}
 }
 //seleccion menu ingreso de personas -> 6 opciones
-
+void modificarPersonita();
+void modificarPilotito();
+void modificarCarrito();
+void modificarSponsorsito();
+void selecmenu3(int opc){
+	switch(opc){
+	case 1:
+		modificarPersonita();
+		break;
+	case 2:
+		modificarPilotito();
+		break;
+	case 3:
+		modificarCarrito();
+		break;
+	case 4: 
+		;
+		break;
+	case 5:
+		modificarSponsorsito();
+		break;
+	case 6:
+		praseleccion();
+	case 7:
+		exit(69);
+	}
+}
+void modificarPersonita(){
+	Per.modifyPersona();
+	seleccionmenu3();
+}
+void modificarPilotito(){
+	Pil.modifyPiloto();
+	seleccionmenu3();
+}
+void modificarCarrito(){
+	Carro.modifyCar();
+	seleccionmenu3();
+}
+void modificarSponsorsito(){
+	Spon.modifySpon();
+	seleccionmenu3();
+}
 void praseleccion(){
 	menu();
 	int i = seleccion();
@@ -268,8 +332,12 @@ void seleccionmenu2(){
 	int i = seleccion();
 	selecmenu2(i);
 }
+void seleccionmenu3(){
+	menu3();
+	int i = seleccion();
+	selecmenu3(i);
+}
 int main (){
 	praseleccion();
 	return 0;
 }
-
