@@ -13,12 +13,14 @@
 #include "databasemodifypil.h"
 #include "databasemodifycar.h"
 #include "databasemodifyspon.h"
+#include "erase.h"
 using namespace std;
 Database DB;
 DatabaseModifyPer Per;
 DatabaseModifyPil Pil;
 DatabaseModifyCar Carro;
 DatabaseModifySpon Spon;
+Erase Borrar;
 //instrucciones originales
 void instrucciones(){
 	cout << "Oprima los numeros segun lo que desee hacer." << endl;
@@ -79,6 +81,19 @@ void menu3(){
 	cout << 3 << " para modificar coches" << endl;
 	cout << 4 << " para modificar escuderias" << endl;
 	cout << 5 << " para modificar patrocinadores" << endl;
+	cout << 6 << " para regresar al menu anterior" << endl;
+	cout << 7 << " para salir de la base de datos" << endl;
+}
+void instrucciones4(){
+	cout << "Oprima los numeros segun lo que desee eliminar." << endl;
+}
+void menu4(){
+	instrucciones4();
+	cout << 1 << " para eliminar personas" << endl;
+	cout << 2 << " para eliminar pilotos" << endl;
+	cout << 3 << " para eliminar coches" << endl;
+	cout << 4 << " para eliminar escuderias" << endl;
+	cout << 5 << " para eliminar patrocinadores" << endl;
 	cout << 6 << " para regresar al menu anterior" << endl;
 	cout << 7 << " para salir de la base de datos" << endl;
 }
@@ -164,6 +179,7 @@ void seleccionmenu1();
 //seleccionando en el primer menu
 void seleccionmenu2(); //seleccionando en el segundo menu -> visualizar datos
 void seleccionmenu3(); //seleccionando en el tercer menu -> modificar datos
+void seleccionmenu4(); //seleccionando en el cuarto menu -> eliminar datos
 //opciones menu
 void seleccionar(int opc){
 	switch(opc){
@@ -177,7 +193,7 @@ void seleccionar(int opc){
 		seleccionmenu3();
 	break;
 	case 4: //eliminar
-		;
+		seleccionmenu4();
 	break;
 	case 5: //salir
 		exit(2604);
@@ -298,6 +314,49 @@ void modificarSponsorsito(){
 	Spon.modifySpon();
 	seleccionmenu3();
 }
+void eliminarPersonita();
+void eliminarPilotito();
+void eliminarCarrito();
+void eliminarSponsorsito();
+void selecmenu4(int opc){
+	switch(opc){
+	case 1:
+		eliminarPersonita();
+		break;
+	case 2:
+		eliminarPilotito();
+		break;
+	case 3:
+		eliminarCarrito();
+	break;
+	case 4: 
+		;
+		break;
+	case 5:
+		eliminarSponsorsito();
+		break;
+	case 6:
+		praseleccion();
+	case 7:
+		exit(69);
+	}
+}
+void eliminarPersonita(){
+	Borrar.erasePersona();
+	seleccionmenu4();
+}
+void eliminarPilotito(){
+	Borrar.erasePiloto();
+	seleccionmenu4();
+}
+void eliminarcarrito(){
+	Borrar.eraseCoche();
+	seleccionmenu4();
+}
+void eliminarSponsorsito(){
+	Borrar.eraseSponsor();
+	seleccionmenu4();
+}
 void praseleccion(){
 	menu();
 	int i = seleccion();
@@ -336,6 +395,11 @@ void seleccionmenu3(){
 	menu3();
 	int i = seleccion();
 	selecmenu3(i);
+}
+void seleccionmenu4(){
+	menu4();
+	int i = seleccion();
+	selecmenu4(i);
 }
 int main (){
 	praseleccion();
