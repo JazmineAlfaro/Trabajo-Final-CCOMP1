@@ -1,6 +1,6 @@
 #include <iostream>
+//template <typename T>;
 using namespace std;
-
 class Database{
 private:
 	static int numPersonas;
@@ -43,4 +43,8 @@ public:
 	void modificarCarVector(Car C, int i);
 	Patrocinadores getSponsorVector(int i);
 	void modificarSponsorVector(Patrocinadores P, int i);
+	void deleteVectorPersona(int i);
+	void deleteVectorPiloto(int i);
+	void deleteVectorCar(int i);
+	void deleteVectorSponsor(int i);
 };
