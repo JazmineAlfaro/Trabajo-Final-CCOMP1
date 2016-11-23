@@ -8,6 +8,7 @@
 #include "piloto.h"
 #include "databaseask.h"
 #include "database.h"
+//template <typename T>;
 
 using namespace std;
 
@@ -134,6 +135,7 @@ void Database::getCarro(){
 		cout << "Carro " << i+1 << endl;
 		cout << "Nombre: " << Get.getName() << endl;
 		cout << "Motor: " << Get.getEngine() << endl;
+		//cout << Get;
 	}
 }
 int Database::getNumSpon(){return numSponsors;}
@@ -229,4 +231,49 @@ Patrocinadores Database::getSponsorVector(int i){
 }
 void Database::modificarSponsorVector(Patrocinadores P, int i){
 	storeSponsor.at(i) = P;
+}
+void Database::deleteVectorPersona(int i){
+	int j = 0;
+	vector<Persona> temp;
+	for(j; j<i; j++)
+		//temp.at(j) = storePersona.at(j);
+		temp.push_back(storePersona.at(j));
+	j++;
+	for(j; j<numPersonas; j++)
+		temp.push_back(storePersona.at(j));
+	storePersona = temp;
+	numPersonas--;	
+}
+void Database::deleteVectorPiloto(int i){
+	int j = 0;
+	vector<Piloto> temp;
+	for(j; j<i; j++)
+		temp.push_back(storePiloto.at(j));
+	j++;
+	for(j; j<numPilotos; j++)
+		temp.push_back(storePiloto.at(j));
+	storePiloto = temp;
+	numPilotos--;	
+}
+void Database::deleteVectorCar(int i){
+	int j = 0;
+	vector<Car> temp;
+	for(j; j<i; j++)
+		temp.push_back(storeCar.at(j));
+	j++;
+	for(j; j<numCarros; j++)
+		temp.push_back(storeCar.at(j));
+	storeCar = temp;
+	numCarros--;
+}
+void Database::deleteVectorSponsor(int i){
+	int j = 0;
+	vector<Patrocinadores> temp;
+	for(j; j<i; j++)
+		temp.push_back(storeSponsor.at(j));
+	j++;
+	for(j; j<numPilotos; j++)
+		temp.push_back(storeSponsor.at(j));
+	storeSponsor = temp;
+	numPilotos--;
 }
