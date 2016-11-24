@@ -17,16 +17,19 @@ int Database::numCarros = 0;
 int Database::numSponsors = 0;
 int Database::numEscuderias = 0;
 int Database::numPilotos = 0;
+
 vector<Persona> hola;
 vector<Car> hola1;
 vector<Patrocinadores> hola2;
 vector<Escuderia> hola3;
 vector<Piloto> hola4;
+
 vector<Persona> Database::storePersona = hola;
 vector<Car> Database::storeCar =  hola1;
 vector<Patrocinadores> Database::storeSponsor = hola2;
 vector<Escuderia> Database::storeEscuderia = hola3;
 vector<Piloto> Database::storePiloto = hola4;
+
 Database::Database(){
 	DatabaseAsk Test;
 	this->myDB = Test;
@@ -50,6 +53,7 @@ bool Database::ingresarMas(){
 		return false;
 }
 int Database::getNumPersonas(){return numPersonas;}
+
 void Database::menuIngrPer(){
 	Persona newPersona;
 	char* name;
