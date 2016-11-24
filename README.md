@@ -6,6 +6,7 @@ Seguir las instrucciones en pantalla.
 ### Tener en cuenta:
 
 -Al ingresar una escuderia, ya se debe tener ingresado por lo menos:
+
 1. Un piloto.
 2. Un carro.
 3. Un patrocinador.
