@@ -1,4 +1,5 @@
 #include<iostream>
+#include<fstream>
 #include <cstdlib> 
 #include <vector>
 #include <string.h>
@@ -21,6 +22,12 @@ DatabaseModifyPil Pil;
 DatabaseModifyCar Carro;
 DatabaseModifySpon Spon;
 Erase Borrar;
+
+/////////////////////////////////////////LEYENDO EL ARCHIVO .txt ///////////////////////////
+ifstream myFile;
+
+
+/////////////////////////////////////////////////////ARCHIVO LEIDO////////////////////////////////////////////////
 //instrucciones originales
 void instrucciones(){
 	cout << "Oprima los numeros segun lo que desee hacer." << endl;
@@ -191,10 +198,10 @@ void seleccionar(int opc){
 		break;
 	case 3: //modificar
 		seleccionmenu3();
-	break;
+		break;
 	case 4: //eliminar
 		seleccionmenu4();
-	break;
+		break;
 	case 5: //salir
 		exit(2604);
 	}
@@ -288,7 +295,7 @@ void selecmenu3(int opc){
 		break;
 	case 4: 
 		;
-		break;
+	break;
 	case 5:
 		modificarSponsorsito();
 		break;
@@ -328,10 +335,10 @@ void selecmenu4(int opc){
 		break;
 	case 3:
 		eliminarCarrito();
-	break;
+		break;
 	case 4: 
 		;
-		break;
+	break;
 	case 5:
 		eliminarSponsorsito();
 		break;
@@ -349,7 +356,7 @@ void eliminarPilotito(){
 	Borrar.erasePiloto();
 	seleccionmenu4();
 }
-void eliminarcarrito(){
+void eliminarCarrito(){
 	Borrar.eraseCoche();
 	seleccionmenu4();
 }
