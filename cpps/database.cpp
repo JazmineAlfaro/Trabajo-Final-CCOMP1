@@ -72,7 +72,7 @@ void Database::getPersona(){
 	for(i = 0; i<numPersonas; i++){
 		Get = storePersona[i];
 		cout << "Persona " << i+1 << endl;
-		cout << "Nombre: " << Get.getname() << endl;
+		cout << "Nombre: " << Get.getname() << " " << Get.getLastName() << endl;
 		cout << "Edad: " << Get.getAge() << endl;
 		Get.printSex();
 		cout << "Pais: " << Get.getCountry() << endl;
@@ -172,24 +172,24 @@ void Database::menuIngrEsc(){
 		newEscuderia.setCarro(storeCar[i-1]); 
 	}
 	do{
-	getSponsor();
-	i = myDB.askNumber();
-	if ((i == 0)||(i>numSponsors)){
-		cout << "Ingrese un numero valido." << endl;
+		getSponsor();
 		i = myDB.askNumber();
-	} else if (i<= numSponsors){
-		newEscuderia.setSponsor(storeSponsor[i-1]);
-	}
+		if ((i == 0)||(i>numSponsors)){
+			cout << "Ingrese un numero valido." << endl;
+			i = myDB.askNumber();
+		} else if (i<= numSponsors){
+			newEscuderia.setSponsor(storeSponsor[i-1]);
+		}
 	}while(ingresarMas());
 	do{
-	getPiloto();
-	i = myDB.askNumber();
-	if ((i == 0)||(i>numPilotos)){
-		cout << "Ingrese un numero valido." << endl;
+		getPiloto();
 		i = myDB.askNumber();
-	} else if (i <= numPilotos) {
-		newEscuderia.setPilotos(storePiloto[i-1]);
-	}
+		if ((i == 0)||(i>numPilotos)){
+			cout << "Ingrese un numero valido." << endl;
+			i = myDB.askNumber();
+		} else if (i <= numPilotos) {
+			newEscuderia.setPilotos(storePiloto[i-1]);
+		}
 	}while(ingresarMas());
 	numEscuderias++;
 	storeEscuderia.push_back(newEscuderia); //Agregar el booleano que pregunta si quieres agregar mas datos CHECK
