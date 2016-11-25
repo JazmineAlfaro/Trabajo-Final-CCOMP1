@@ -1,9 +1,33 @@
-# TrabajoFinal
+# Trabajo Final
 Base de datos de Fórmula 1 (Pilotos, Escuderias, Carros, Auspiciadores).
 
 Seguir las instrucciones en pantalla.
 
-### Tener en cuenta:
+### Al ingresar datos:
+
+-Al ingresar una persona, se requiere:
+
+1. Nombre
+2. Apellido
+3. Edad
+4. Sexo
+
+-Al ingresar un piloto, se requiere:
+
+1. Los mismos datos de persona
+2. Puntos
+3. Paga
+4. Número
+
+-Al ingresar un carro, se requiere:
+
+1. Nombre
+2. Motor
+
+-Al ingresar un auspiciador, se requiere:
+
+1. Nombre (sin espacios)
+2. Ingresos
 
 -Al ingresar una escuderia, ya se debe tener ingresado por lo menos:
 
@@ -11,6 +35,17 @@ Seguir las instrucciones en pantalla.
 2. Un carro.
 3. Un patrocinador.
 
+### Al visualizar datos
+
+-Seguir las instrucciones en pantalla según lo que quiera visualizar.
+
+### Al modificar datos
+
+- A una persona se le puede modificar:
+1. Nombre
+2. Apellido
+3. Sexo
+4. Edad
 ### Sugerencias:
 
 -Al ingresar el sexo ya sea de una persona o de un piloto, solo se debe usar UN caracter (preferiblemente 'M' de male o 'F' de female).
