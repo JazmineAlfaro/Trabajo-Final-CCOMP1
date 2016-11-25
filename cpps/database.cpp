@@ -34,15 +34,8 @@ Database::Database(){
 	DatabaseAsk Test;
 	this->myDB = Test;
 }
-void Database::instEscudCar(){
-	;
-}
-void Database::instEscudPil(){
-	;
-}
-void Database::instEscudSpon(){
-	;
-}
+
+
 bool Database::ingresarMas(){
 	cout << "¿Desea agregar otro valor?(s/n)" << endl;
 	char rpta;
@@ -321,4 +314,6 @@ void Database::deleteVectorEscuderia(int i){
 	storeEscuderia = temp;
 	numEscuderias--;
 }
-
+void Database::pbackVectorPersona(Persona P){
+	storePersona.push_back(P);
+}
