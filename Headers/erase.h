@@ -5,6 +5,7 @@ public:
 	int chooseCoche();
 	int chooseEscuderia();
 	int chooseSponsor();
+	bool borrarEscuderia();
 	void erasePersona();
 	void erasePiloto();
 	void eraseCoche();
@@ -12,3 +13,4 @@ public:
 	void eraseSponsor();
 	
 };
+
