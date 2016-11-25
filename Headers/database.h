@@ -43,6 +43,8 @@ public:
 	void modificarCarVector(Car C, int i);
 	Patrocinadores getSponsorVector(int i);
 	void modificarSponsorVector(Patrocinadores P, int i);
+	Escuderia getEscuderiaVector(int i);
+	void modificarEscuderiaVector(Escuderia E, int i);
 	void deleteVectorPersona(int i);
 	void deleteVectorPiloto(int i);
 	void deleteVectorCar(int i);
