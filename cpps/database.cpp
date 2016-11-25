@@ -74,7 +74,7 @@ void Database::getPersona(){
 	int i;
 	Persona Get;
 	if (numPersonas == 0){
-		cout << "No hay datos para mostrar." << endl;
+		cout << "No hay datos para visualizar." << endl;
 	} else {
 		for(i = 0; i<numPersonas; i++){
 			Get = storePersona[i];
