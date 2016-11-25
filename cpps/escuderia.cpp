@@ -61,7 +61,7 @@ void Escuderia::setSponsor(Patrocinadores Sponsor){
 }
 void Escuderia::eliminarSponsors(int i){
 	Patrocinadores *a;
-	a = new Patrocinadores[num Sponsorss -1];
+	a = new Patrocinadores[numSponsorss -1];
 	int j;
 	for(j = 0; j<i; j++)
 		a[j] = Sponsors[j];
