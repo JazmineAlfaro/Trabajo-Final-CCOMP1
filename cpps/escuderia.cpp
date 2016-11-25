@@ -20,6 +20,7 @@ Escuderia::Escuderia(){
 	this->Pilotos = b;
 	//this->jefeDeIngenieros = Jefito;
 	this->carro = carrito;
+	this->name = " ";
 	
 }
 void Escuderia::setPilotos(Piloto Driver){
@@ -34,6 +35,19 @@ void Escuderia::setPilotos(Piloto Driver){
 	this->Pilotos = a;//ARREGLAR
 }
 
+void Escuderia::eliminarPilotos(int i){
+	Piloto *a;
+	a = new Piloto[numPilotoss - 1];
+	int j;
+	for(j = 0; j < i; j++)
+		a[j] = Pilotos[j];
+	j++;
+	for(j; j<numPilotoss; j++)
+		a[j] = Pilotos[j];
+	numPilotoss--;
+	delete [] Pilotos;
+	this->Pilotos = a;
+}
 void Escuderia::setSponsor(Patrocinadores Sponsor){
 	Patrocinadores *a;
 	a = new Patrocinadores[numSponsorss + 1];
@@ -43,6 +57,19 @@ void Escuderia::setSponsor(Patrocinadores Sponsor){
 	numSponsorss++;
 	a[i] = Sponsor;
 	delete [] Sponsors;
+	this->Sponsors = a;
+}
+void Escuderia::eliminarSponsors(int i){
+	Patrocinadores *a;
+	a = new Patrocinadores[num Sponsorss -1];
+	int j;
+	for(j = 0; j<i; j++)
+		a[j] = Sponsors[j];
+	j++;
+	for(j; j<numSponsorss; j++)
+		a[j] = Sponsors[j];
+	numSponsorss--;
+	delete[] Sponsors;
 	this->Sponsors = a;
 }
 void Escuderia::setName(char* neim){this->name = neim;}
