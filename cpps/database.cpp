@@ -256,6 +256,12 @@ Patrocinadores Database::getSponsorVector(int i){
 void Database::modificarSponsorVector(Patrocinadores P, int i){
 	storeSponsor.at(i) = P;
 }
+Escuderia Database::getEscuderiaVector(int i){
+	return this->storeEscuderia.at(i);
+}
+void Database::modificarEscuderiaVector(Escuderia E, int i){
+	storeEscuderia.at(i) = E;
+}
 void Database::deleteVectorPersona(int i){
 	int j = 0;
 	vector<Persona> temp;
