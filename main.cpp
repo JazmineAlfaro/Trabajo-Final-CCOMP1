@@ -241,33 +241,18 @@ void prasaleccion();
 void selecmenu2(int opc){ //menu 2 = visualizar datos
 	switch(opc){
 	case 1:
-		if(DB.getNumPersonas()==0){
-			cout<<"No hay datos para visualizar"<<endl;
-		}
 		getPersonas();
 		break;
 	case 2:
-		if(DB.getNumPilotos()==0){
-			cout<<"No hay datos para visualizar"<<endl;
-		}
 		getPilotos();
 		break;
 	case 3:
-		if(DB.getNumCarros()==0){
-			cout<<"No hay datos para visualizar"<<endl;
-		}
 		getCarros();
 		break;
 	case 4:
-		if(DB.getNumEscuderias()==0){
-			cout<<"No hay datos para visualizar"<<endl;
-		}
 		getEscuderias();
 		break;
 	case 5:
-		if(DB.getNumSpon()==0){
-			cout<<"No hay datos para visualizar"<<endl;
-		}
 		getPatrocinadores();
 		break;
 	case 6:
@@ -412,3 +397,4 @@ int main (){
 	praseleccion();
 	return 0;
 }
+
