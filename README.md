@@ -86,3 +86,4 @@ Seguir las instrucciones en pantalla según lo que quiera visualizar.
 
 - Al agregar un auspiciador, no ponga espacios o forzará la detención de la base de datos.
 
+- El uso de los archivos .txt es completamente opcional. En caso de no usarlos simplemente saldrá el mensaje "Archivo no encontrado". 
