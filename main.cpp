@@ -14,6 +14,7 @@
 #include "databasemodifypil.h"
 #include "databasemodifycar.h"
 #include "databasemodifyspon.h"
+#include "databasemodifyescu.h"
 #include "erase.h"
 using namespace std;
 Database DB;
@@ -21,6 +22,7 @@ DatabaseModifyPer Per;
 DatabaseModifyPil Pil;
 DatabaseModifyCar Carro;
 DatabaseModifySpon Spon;
+DatabaseModifyEscu Escu;
 Erase Borrar;
 
 /////////////////////////////////////////LEYENDO EL ARCHIVO .txt ///////////////////////////
@@ -267,6 +269,7 @@ void modificarPersonita();
 void modificarPilotito();
 void modificarCarrito();
 void modificarSponsorsito();
+void modificarEscudericita();
 void selecmenu3(int opc){
 	switch(opc){
 	case 1:
@@ -279,7 +282,7 @@ void selecmenu3(int opc){
 		modificarCarrito();
 		break;
 	case 4: 
-		;
+		modificarEscudericita();
 	break;
 	case 5:
 		modificarSponsorsito();
@@ -306,9 +309,14 @@ void modificarSponsorsito(){
 	Spon.modifySpon();
 	seleccionmenu3();
 }
+void modificarEscudericita(){
+	Escu.modifyEscuderia();
+	seleccionmenu3();
+}
 void eliminarPersonita();
 void eliminarPilotito();
 void eliminarCarrito();
+void eliminarEscudericita();
 void eliminarSponsorsito();
 void selecmenu4(int opc){
 	switch(opc){
@@ -322,7 +330,7 @@ void selecmenu4(int opc){
 		eliminarCarrito();
 		break;
 	case 4: 
-		;
+		eliminarEscudericita();
 	break;
 	case 5:
 		eliminarSponsorsito();
@@ -343,6 +351,10 @@ void eliminarPilotito(){
 }
 void eliminarCarrito(){
 	Borrar.eraseCoche();
+	seleccionmenu4();
+}
+void eliminarEscudericita(){
+	Borrar.eraseEscuderia();
 	seleccionmenu4();
 }
 void eliminarSponsorsito(){
