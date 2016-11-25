@@ -302,9 +302,19 @@ void Database::deleteVectorSponsor(int i){
 	for(j; j<i; j++)
 		temp.push_back(storeSponsor.at(j));
 	j++;
-	for(j; j<numPilotos; j++)
+	for(j; j<numSponsors; j++)
 		temp.push_back(storeSponsor.at(j));
 	storeSponsor = temp;
 	numPilotos--;
 }
-
+void Database::deleteVectorEscuderia(int i){
+	int j = 0;
+	vector<Escuderia> temp;
+	for(j; j<i; j++)
+		temp.push_back(storeSponsor.at(j));
+	j++;
+	for(j; j<numPilotos; j++)
+		temp.push_back(storeEscuderia.at(j));
+	storeEscuderia = temp;
+	numEscuderia--;
+}
