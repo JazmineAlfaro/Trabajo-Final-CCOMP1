@@ -25,11 +25,6 @@ DatabaseModifySpon Spon;
 DatabaseModifyEscu Escu;
 Erase Borrar;
 
-/////////////////////////////////////////LEYENDO EL ARCHIVO .txt ///////////////////////////
-ifstream myFile;
-
-
-/////////////////////////////////////////////////////ARCHIVO LEIDO////////////////////////////////////////////////
 //instrucciones originales
 void instrucciones(){
 	cout << "Oprima los numeros segun lo que desee hacer." << endl;
@@ -406,7 +401,42 @@ void seleccionmenu4(){
 	selecmenu4(i);
 }
 int main (){
+	/////////////////////////////////////////LEYENDO EL ARCHIVO .txt ///////////////////////////
+	ifstream pilotos;
+	pilotos.open("f12016pilotos.txt");
+	if (pilotos.fail()){
+		cerr << "Error abriendo archivo f12016pilotos.txt" << endl;
+	}
+	int i;
+	char* name;
+	char* lname;
+	char* country;
+	int age, points, pay, number;
+	char sex;
+	//for (i = 0; i<22; i++){
+	//for (std::string line; getline(name >> lname >> age >> country >> sex >> points >> pay >> number, line);){
+	while(!pilotos.eof()){
+		Piloto Temp;
+		Database K;
+		/*char* name;
+		char* lname;
+		char* country;
+		int age, points, pay, number;
+		char sex;*/
+		//char* mname = name;
+		//char* mlname = lname;
+		//char* mcountry = country;
+		pilotos >> name >> lname;
+		pilotos >> age;
+		pilotos >> country;
+		pilotos >> sex;
+		pilotos >> points >> pay >> number;
+		Temp.setName(name); Temp.setLastName(lname); Temp.setCountry(country);
+		Temp.setAge(age); Temp.addPoints(points); Temp.setPay(pay); Temp.setNumber(number);
+		Temp.setSex(sex);
+		K.pbackVectorPersona(Temp);
+	}
+	/////////////////////////////////////////////////////ARCHIVO LEIDO////////////////////////////////////////////////
 	praseleccion();
 	return 0;
 }
-
