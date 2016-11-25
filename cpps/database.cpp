@@ -8,8 +8,8 @@
 #include "piloto.h"
 #include "databaseask.h"
 #include "database.h"
-//template <typename T>;
-
+	//template <typename T>;
+	
 using namespace std;
 
 int Database::numPersonas = 0;
@@ -73,13 +73,17 @@ void Database::menuIngrPer(){
 void Database::getPersona(){
 	int i;
 	Persona Get;
-	for(i = 0; i<numPersonas; i++){
-		Get = storePersona[i];
-		cout << "Persona " << i+1 << endl;
-		cout << "Nombre: " << Get.getname() << " " << Get.getLastName() << endl;
-		cout << "Edad: " << Get.getAge() << endl;
-		Get.printSex();
-		cout << "Pais: " << Get.getCountry() << endl;
+	if (numPersonas == 0){
+		cout << "No hay datos para mostrar." << endl;
+	} else {
+		for(i = 0; i<numPersonas; i++){
+			Get = storePersona[i];
+			cout << "Persona " << i+1 << endl;
+			cout << "Nombre: " << Get.getname() << " " << Get.getLastName() << endl;
+			cout << "Edad: " << Get.getAge() << endl;
+			Get.printSex();
+			cout << "Pais: " << Get.getCountry() << endl;
+		}
 	}
 }
 int Database::getNumPilotos(){return numPilotos;}
@@ -108,17 +112,21 @@ void Database::menuIngrPil(){
 void Database::getPiloto(){
 	int i;
 	Piloto Get;
-	for(i=0; i<numPilotos; i++){
-		Get = storePiloto[i];
-		cout << "Piloto " << i+1 << endl;
-		cout << "Nombre: " << Get.getname() << " " << Get.getLastName() << endl;
-		cout << "Edad: " << Get.getAge() << endl;
-		Get.printSex();
-		cout << "Pais: " << Get.getCountry() << endl;
-		cout << "Puntos: " << Get.getPoints() << endl;
-		cout << "Puntos de la licencia: " << Get.getLPoints() << endl;
-		cout << "Paga: " << Get.getPay() << endl;
-		cout << "Numero: " << Get.getNumber() << endl;
+	if (numPilotos == 0){
+		cout << "No hay datos para visualizar." << endl;
+	} else {
+		for(i=0; i<numPilotos; i++){
+			Get = storePiloto[i];
+			cout << "Piloto " << i+1 << endl;
+			cout << "Nombre: " << Get.getname() << " " << Get.getLastName() << endl;
+			cout << "Edad: " << Get.getAge() << endl;
+			Get.printSex();
+			cout << "Pais: " << Get.getCountry() << endl;
+			cout << "Puntos: " << Get.getPoints() << endl;
+			cout << "Puntos de la licencia: " << Get.getLPoints() << endl;
+			cout << "Paga: " << Get.getPay() << endl;
+			cout << "Numero: " << Get.getNumber() << endl;
+		}
 	}
 }
 int Database::getNumCarros(){return numCarros;}
@@ -134,12 +142,16 @@ void Database::menuIngrCoc(){
 void Database::getCarro(){
 	int i;
 	Car Get;
-	for (i = 0; i<numCarros; i++){
-		Get = storeCar[i];
-		cout << "Carro " << i+1 << endl;
-		cout << "Nombre: " << Get.getName() << endl;
-		cout << "Motor: " << Get.getEngine() << endl;
+	if (numCarros == 0){
+		cout << "No hay datos para visualizar." << endl;
+	} else {
+		for (i = 0; i<numCarros; i++){
+			Get = storeCar[i];
+			cout << "Carro " << i+1 << endl;
+			cout << "Nombre: " << Get.getName() << endl;
+			cout << "Motor: " << Get.getEngine() << endl;
 		//cout << Get;
+		}
 	}
 }
 int Database::getNumSpon(){return numSponsors;}
@@ -155,11 +167,15 @@ void Database::menuIngrSpon(){
 void Database::getSponsor(){
 	int i;
 	Patrocinadores Get;
-	for(i = 0; i<numSponsors; i++){
-		Get = storeSponsor[i];
-		cout << "Patrocinador " << i+1 << endl;
-		cout << "Nombre: " << Get.getName() << endl;
-		cout << "Ingresos: " << Get.getIngresos() << endl;
+	if (numSponsors == 0){
+		cout << "No hay datos para visualizar." << endl;
+	} else {
+		for(i = 0; i<numSponsors; i++){
+			Get = storeSponsor[i];
+			cout << "Patrocinador " << i+1 << endl;
+			cout << "Nombre: " << Get.getName() << endl;
+			cout << "Ingresos: " << Get.getIngresos() << endl;
+		}
 	}
 }
 int Database::getNumEscuderias(){return numEscuderias;}
@@ -202,14 +218,18 @@ void Database::getEscuderia(){
 	int i;
 	Escuderia Get;
 	Car Carro;
-	for(i=0; i<numEscuderias; i++){
-		Get = storeEscuderia[i];
-		cout << "Escuderia " << i+1 << endl;
-		cout << "Nombre: " << Get.getName() << endl;
-		Get.imprimirPilotos();
-		Get.imprimirSponsors();
-		Carro = Get.getCarro();
-		Carro.imprimirCarro();
+	if (numEscuderias == 0){
+		cout << "No hay datos para visualizar." << endl;
+	} else {
+		for(i=0; i<numEscuderias; i++){
+			Get = storeEscuderia[i];
+			cout << "Escuderia " << i+1 << endl;
+			cout << "Nombre: " << Get.getName() << endl;
+			Get.imprimirPilotos();
+			Get.imprimirSponsors();
+			Carro = Get.getCarro();
+			Carro.imprimirCarro();
+		}
 	}
 }
 Persona Database::getPersonaVector(int i){
@@ -281,3 +301,4 @@ void Database::deleteVectorSponsor(int i){
 	storeSponsor = temp;
 	numPilotos--;
 }
+
