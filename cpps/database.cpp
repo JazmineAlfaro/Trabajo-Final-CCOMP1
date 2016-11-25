@@ -183,6 +183,8 @@ void Database::menuIngrEsc(){
 	int i;
 	Escuderia newEscuderia;
 	char* myName = myDB.askName();
+	newEscuderia.setName(myName);
+	//agregando carro
 	getCarro();
 	i = myDB.askNumber();
 	if ((i == 0) || (i>numCarros)){
@@ -191,6 +193,7 @@ void Database::menuIngrEsc(){
 	} else if (i <= numCarros){
 		newEscuderia.setCarro(storeCar[i-1]); 
 	}
+	//agregando auspiciadores a peticion del usuario
 	do{
 		getSponsor();
 		i = myDB.askNumber();
@@ -201,6 +204,7 @@ void Database::menuIngrEsc(){
 			newEscuderia.setSponsor(storeSponsor[i-1]);
 		}
 	}while(ingresarMas());
+	//agregando pilotos a peticion del usuario
 	do{
 		getPiloto();
 		i = myDB.askNumber();
@@ -266,7 +270,6 @@ void Database::deleteVectorPersona(int i){
 	int j = 0;
 	vector<Persona> temp;
 	for(j; j<i; j++)
-		//temp.at(j) = storePersona.at(j);
 		temp.push_back(storePersona.at(j));
 	j++;
 	for(j; j<numPersonas; j++)
@@ -311,10 +314,11 @@ void Database::deleteVectorEscuderia(int i){
 	int j = 0;
 	vector<Escuderia> temp;
 	for(j; j<i; j++)
-		temp.push_back(storeSponsor.at(j));
+		temp.push_back(storeEscuderia.at(j));
 	j++;
 	for(j; j<numPilotos; j++)
 		temp.push_back(storeEscuderia.at(j));
 	storeEscuderia = temp;
-	numEscuderia--;
+	numEscuderias--;
 }
+
