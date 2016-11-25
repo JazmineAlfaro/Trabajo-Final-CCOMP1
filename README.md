@@ -42,10 +42,12 @@ Seguir las instrucciones en pantalla.
 ### Al modificar datos
 
 - A una persona se le puede modificar:
+
 1. Nombre
 2. Apellido
 3. Sexo
 4. Edad
+
 ### Sugerencias:
 
 -Al ingresar el sexo ya sea de una persona o de un piloto, solo se debe usar UN caracter (preferiblemente 'M' de male o 'F' de female).
