@@ -49,4 +49,5 @@ public:
 	void deleteVectorPiloto(int i);
 	void deleteVectorCar(int i);
 	void deleteVectorSponsor(int i);
+	void deleteVectorEscuderia(int i);
 };
