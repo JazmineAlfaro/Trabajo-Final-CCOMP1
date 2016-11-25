@@ -17,7 +17,9 @@ public:
 	Escuderia();
 	//Escuderia(Persona Drivers[], int numP, Patrocinadores Pat[], int numS, char* neim, Persona Jefe, Persona Mecs[], int numM, Car car);
 	void setPilotos(Piloto Driver);
+	void eliminarPilotos(int i);
 	void setSponsor(Patrocinadores Sponsor);
+	void eliminarSponsors(int i);
 	void setName(char* neim);
 	void setJefe(Persona Jefe);
 	void setMecanicos(Persona Mecanico);
@@ -31,3 +33,4 @@ public:
 	void imprimirPilotos();
 	
 };
+
