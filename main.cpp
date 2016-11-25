@@ -29,7 +29,7 @@ Erase Borrar;
 void instrucciones(){
 	cout << "Oprima los numeros segun lo que desee hacer." << endl;
 }
-//primer menu
+// menu
 void menu(){
 	instrucciones();
 	cout << 1 << " para ingresar datos" << endl;
@@ -101,6 +101,7 @@ void menu4(){
 	cout << 6 << " para regresar al menu anterior" << endl;
 	cout << 7 << " para salir de la base de datos" << endl;
 }
+//funcion que va a llamar cuando apretas 1
 void menuIngPer(){
 	instruccionesIngPer();
 	DB.menuIngrPer();
@@ -402,11 +403,11 @@ void seleccionmenu4(){
 }
 int main (){
 	/////////////////////////////////////////LEYENDO EL ARCHIVO .txt ///////////////////////////
-	ifstream pilotos;
+	/*ifstream pilotos;
 	pilotos.open("f12016pilotos.txt");
 	if (pilotos.fail()){
-		cerr << "Error abriendo archivo f12016pilotos.txt" << endl;
-	}
+		cerr << "Error abriendo archivo f120166pilotos.txt" << endl;
+	} else {
 	int i;
 	char* name;
 	char* lname;
@@ -418,11 +419,11 @@ int main (){
 	while(!pilotos.eof()){
 		Piloto Temp;
 		Database K;
-		/*char* name;
+		char* name;
 		char* lname;
 		char* country;
 		int age, points, pay, number;
-		char sex;*/
+		char sex;
 		//char* mname = name;
 		//char* mlname = lname;
 		//char* mcountry = country;
@@ -436,6 +437,7 @@ int main (){
 		Temp.setSex(sex);
 		K.pbackVectorPersona(Temp);
 	}
+	}*/
 	/////////////////////////////////////////////////////ARCHIVO LEIDO////////////////////////////////////////////////
 	praseleccion();
 	return 0;
