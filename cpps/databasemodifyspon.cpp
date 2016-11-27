@@ -29,7 +29,7 @@ int DatabaseModifySpon::selectDataSpon(){
 void DatabaseModifySpon::modificarNombre(Patrocinadores P, int i){
 	DatabaseAsk H;
 	cout << "Usted va a modificar el nombre." << endl;
-	char* newName = H.askName();
+	string newName = H.askName();
 	P.setName(newName);
 	Database K;
 	K.modificarSponsorVector(P, i);
@@ -58,10 +58,10 @@ void DatabaseModifySpon::modifySpon(){
 	if (K.getNumSpon() == 0){
 		cout << "No hay datos para modificar. " << endl;
 	} else {
-	sponsor = chooseSpon();
-	selectData = selectDataSpon();
-	sponsor--;
-	miSponsor = K.getSponsorVector(sponsor);
-	selecmodificacion(selectData, sponsor, miSponsor);
+		sponsor = chooseSpon();
+		selectData = selectDataSpon();
+		sponsor--;
+		miSponsor = K.getSponsorVector(sponsor);
+		selecmodificacion(selectData, sponsor, miSponsor);
 	}
 }
