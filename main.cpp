@@ -278,7 +278,7 @@ void selecmenu3(int opc){
 		break;
 	case 4: 
 		modificarEscudericita();
-		break;
+	break;
 	case 5:
 		modificarSponsorsito();
 		break;
@@ -326,7 +326,7 @@ void selecmenu4(int opc){
 		break;
 	case 4: 
 		eliminarEscudericita();
-		break;
+	break;
 	case 5:
 		eliminarSponsorsito();
 		break;
@@ -420,97 +420,70 @@ int main (){
 	sponsorProfit.open("f12016sponsorsingresos.txt");
 	escuderias.open("f12016escuderiasnames.txt");
 	if ( (pilotosNames.fail()) || (pilotosLNames.fail()) || (pilotosCountry.fail()) || (pilotosAge.fail()) || (pilotosPoints.fail())
-		|| (pilotosPay.fail()) || (pilotosNumbers.fail()) || (carNames.fail()) || (carEngines.fail()) || (sponsorNames.fail()) ||
+	|| (pilotosPay.fail()) || (pilotosNumbers.fail()) || (carNames.fail()) || (carEngines.fail()) || (sponsorNames.fail()) ||
 		sponsorProfit.fail() || escuderias.fail() ){
 		cerr << "Error abriendo algun archivo" << endl;
 	} else {
-		//for (i = 0; i<20; i++){
-		Piloto Temp;
-		Database K;
-		int i = 0;
-		char* name;
-		char* lname;
-		char* country;
-		string myName, myLName, myCountry;
-		int age, points, pay, number;
-		char sex;
-		char* carName;
-		char* carEngine;
-		char* sponsorName;
-		int sponsorProfits;
-		char* escuderiaName;
-		string myCarName, myCarEngine, mySponsorName, myEscuderiaName;
-		Car Temp2;
-		Patrocinadores Sponsor;
-		Escuderia Team;
-		while(!pilotosNumbers.eof()){
-			getline(pilotosNames, myName);
-			getline(pilotosLNames, myLName);
-			getline(pilotosCountry, myCountry);
-			name = new char[15];
-			strcpy(name, myName.c_str());
-			lname = new char[15];
-			strcpy(lname, myLName.c_str());
-			country = new char[15];
-			strcpy(country, myCountry.c_str());
-			pilotosAge >> age;
-			pilotosPoints >> points;
-			pilotosNumbers >> number;
-			pilotosPay >> pay;
-			Temp.setName(name); Temp.setLastName(lname); Temp.setCountry(country);
-			Temp.setAge(age); Temp.addPoints(points); Temp.setPay(pay); Temp.setNumber(number);
-			Temp.setSex('M');
-			K.pbackVectorPiloto(Temp);
-			delete [] name;
-			delete [] lname;
-			delete [] country;
-		}
-		while(!carNames.eof()){
-			int j;
-			getline(carNames, myCarName);
-			getline(carNames, myCarEngine);
-			getline(sponsorNames, mySponsorName);
-			getline(escuderias, myEscuderiaName);
-			sponsorProfit >> sponsorProfits;
-			carName = new char[15];
-			strcpy(carName, myCarName.c_str());
-			carEngine = new char[15];
-			strcpy(carEngine, myCarEngine.c_str());
-			sponsorName = new char[20];
-			strcpy(sponsorName, mySponsorName.c_str());
-			escuderiaName = new char[15];
-			strcpy(escuderiaName, myEscuderiaName.c_str());
-			Temp2.setName(carName);
-			Temp2.setEngine(carEngine);
-			Sponsor.setName(sponsorName);
-			Sponsor.setIngresos(sponsorProfits);
-			Team.setName(escuderiaName);
-			for(i, j = 0; j<2; j++, i++)
-				Team.setPilotos(K.getPilotoVector(i));
-			Team.setSponsor(Sponsor);
-			K.pbackVectorCarro(Temp2);
-			K.pbackVectorSponsor(Sponsor);
-			K.pbackVectorEscuderia(Team);
-			delete [] carName;
-			delete [] carEngine;
-			delete [] sponsorName;
-			delete [] escuderiaName;
-		}
-		pilotosNames.close();
-		pilotosLNames.close();
-		pilotosCountry.close();
-		pilotosAge.close();
-		pilotosPoints.close();
-		pilotosNumbers.close();
-		pilotosPay.close();
-		carNames.close();
-		carEngines.close();
-		sponsorNames.close();
-		sponsorProfit.close();
-		escuderias.close();
+	//for (i = 0; i<20; i++){
+	Piloto Temp;
+	Database K;
+	int i = 0;
+	string myName, myLName, myCountry;
+	int age, points, pay, number;
+	char sex;
+	int sponsorProfits;
+	string myCarName, myCarEngine, mySponsorName, myEscuderiaName;
+	Car Temp2;
+	Patrocinadores Sponsor;
+	Escuderia Team;
+	while(!pilotosNumbers.eof()){
+		getline(pilotosNames, myName);
+		getline(pilotosLNames, myLName);
+		getline(pilotosCountry, myCountry);
+		pilotosAge >> age;
+		pilotosPoints >> points;
+		pilotosNumbers >> number;
+		pilotosPay >> pay;
+		Temp.setName(myName); Temp.setLastName(myLName); Temp.setCountry(myCountry);
+		Temp.setAge(age); Temp.addPoints(points); Temp.setPay(pay); Temp.setNumber(number);
+		Temp.setSex('M');
+		K.pbackVectorPiloto(Temp);
+	}
+	while(!carNames.eof()){
+		int j;
+		getline(carNames, myCarName);
+		getline(carNames, myCarEngine);
+		getline(sponsorNames, mySponsorName);
+		getline(escuderias, myEscuderiaName);
+		sponsorProfit >> sponsorProfits;
+		Temp2.setName(myCarName);
+		Temp2.setEngine(myCarEngine);
+		Sponsor.setName(mySponsorName);
+		Sponsor.setIngresos(sponsorProfits);
+		Team.setName(myEscuderiaName);
+		for(i, j = 0; j<2; j++, i++)
+			Team.setPilotos(K.getPilotoVector(i));
+		Team.setSponsor(Sponsor);
+		K.pbackVectorCarro(Temp2);
+		K.pbackVectorSponsor(Sponsor);
+		K.pbackVectorEscuderia(Team);
+	}
+	pilotosNames.close();
+	pilotosLNames.close();
+	pilotosCountry.close();
+	pilotosAge.close();
+	pilotosPoints.close();
+	pilotosNumbers.close();
+	pilotosPay.close();
+	carNames.close();
+	carEngines.close();
+	sponsorNames.close();
+	sponsorProfit.close();
+	escuderias.close();
 	}
 	///////////////////////////FIN PILOTOS//////////////////////////////////
 	/////////////////////////////////////////////////////ARCHIVO LEIDO////////////////////////////////////////////////
 	praseleccion();
 	return 0;
 }
+
