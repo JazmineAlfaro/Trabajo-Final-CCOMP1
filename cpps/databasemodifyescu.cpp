@@ -31,7 +31,7 @@ int DatabaseModifyEscu::selectDataEscuderias(){
 void DatabaseModifyEscu::modificarNombre(Escuderia E, int i){
 	DatabaseAsk H;
 	cout << "Usted va a modificar el nombre." << endl;
-	char* newName = H.askName();
+	string newName = H.askName();
 	E.setName(newName);
 	Database K;
 	K.modificarEscuderiaVector(E, i);
@@ -79,10 +79,10 @@ void DatabaseModifyEscu::modifyEscuderia(){
 	if (K.getNumEscuderias() == 0){
 		cout << "No hay datos para modificar." << endl;
 	} else {
-	escuderia = chooseEscuderias();
-	selectData = selectDataEscuderias();
-	escuderia--;
-	miTeam = K.getEscuderiaVector(escuderia);
-	selecmodificacion(selectData, escuderia, miTeam);
+		escuderia = chooseEscuderias();
+		selectData = selectDataEscuderias();
+		escuderia--;
+		miTeam = K.getEscuderiaVector(escuderia);
+		selecmodificacion(selectData, escuderia, miTeam);
 	}
 }
