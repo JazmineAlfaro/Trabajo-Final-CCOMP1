@@ -401,8 +401,12 @@ void seleccionmenu4(){
 	selecmenu4(i);
 }
 int main (){
-	/////////////////////////////////////////LEYENDO EL ARCHIVO .txt ///////////////////////////
+	/////////////////////////////////////////LEYENDO ARCHIVOS .txt ///////////////////////////
+	///////////////////////////PILOTOS /////////////////
 	ifstream pilotosNames, pilotosLNames, pilotosCountry, pilotosAge, pilotosPoints, pilotosPay, pilotosNumbers;
+	ifstream carNames, carEngines;
+	ifstream sponsorNames, sponsorProfit;
+	ifstream escuderias;
 	pilotosNames.open("f12016pilotosnames.txt");
 	pilotosLNames.open("f12016pilotoslnames.txt");
 	pilotosCountry.open("f12016pilotoscountry.txt");
@@ -410,41 +414,44 @@ int main (){
 	pilotosPoints.open("f12016pilotospoints.txt");
 	pilotosPay.open("f12016pilotospay.txt");
 	pilotosNumbers.open("f12016pilotosnumbers.txt");
-	if ((pilotosNames.fail()) || (pilotosLNames.fail()) || (pilotosCountry.fail()) || (pilotosAge.fail()) || (pilotosPoints.fail()) || (pilotosPay.fail()) || (pilotosNumbers.fail())){
+	carNames.open("f12016carnames.txt");
+	carEngines.open("f12016carengines.txt");
+	sponsorNames.open("f12016sponsorsnames.txt");
+	sponsorProfit.open("f12016sponsorsingresos.txt");
+	escuderias.open("f12016escuderiasnames.txt");
+	if ( (pilotosNames.fail()) || (pilotosLNames.fail()) || (pilotosCountry.fail()) || (pilotosAge.fail()) || (pilotosPoints.fail())
+	|| (pilotosPay.fail()) || (pilotosNumbers.fail()) || (carNames.fail()) || (carEngines.fail()) || (sponsorNames.fail()) ||
+		sponsorProfit.fail() || escuderias.fail() ){
 		cerr << "Error abriendo algun archivo" << endl;
-	}
-	int i;
+	} else {
 	//for (i = 0; i<20; i++){
 	Piloto Temp;
 	Database K;
+	int i = 0;
 	char* name;
 	char* lname;
 	char* country;
 	string myName, myLName, myCountry;
 	int age, points, pay, number;
 	char sex;
+	char* carName;
+	char* carEngine;
+	char* sponsorName;
+	int sponsorProfits;
+	char* escuderiaName;
+	string myCarName, myCarEngine, mySponsorName, myEscuderiaName;
+	Car Temp2;
+	Patrocinadores Sponsor;
+	Escuderia Team;
 	while(!pilotosNumbers.eof()){
-		/*Piloto Temp;
-		Database K;
-		char* name;
-		char* lname;
-		char* country;
-		int age, points, pay, number;
-		char sex;*/
-		//pilotosNames >> name;
-		//pilotosLNames >> lname;
-		//pilotosCountry >> country;
 		getline(pilotosNames, myName);
 		getline(pilotosLNames, myLName);
 		getline(pilotosCountry, myCountry);
 		name = new char[15];
-		//memcpy(name, myName.c_str(), 15);
 		strcpy(name, myName.c_str());
 		lname = new char[15];
-		//memcpy(lname, myLName.c_str(),15);
 		strcpy(lname, myLName.c_str());
 		country = new char[15];
-		//memcpy(country, myCountry.c_str(), 15);
 		strcpy(country, myCountry.c_str());
 		pilotosAge >> age;
 		pilotosPoints >> points;
@@ -458,6 +465,37 @@ int main (){
 		delete [] lname;
 		delete [] country;
 	}
+	while(!carNames.eof()){
+		int j;
+		getline(carNames, myCarName);
+		getline(carNames, myCarEngine);
+		getline(sponsorNames, mySponsorName);
+		getline(escuderias, myEscuderiaName);
+		sponsorProfit >> sponsorProfits;
+		carName = new char[15];
+		strcpy(carName, myCarName.c_str());
+		carEngine = new char[15];
+		strcpy(carEngine, myCarEngine.c_str());
+		sponsorName = new char[20];
+		strcpy(sponsorName, mySponsorName.c_str());
+		escuderiaName = new char[15];
+		strcpy(escuderiaName, myEscuderiaName.c_str());
+		Temp2.setName(carName);
+		Temp2.setEngine(carEngine);
+		Sponsor.setName(sponsorName);
+		Sponsor.setIngresos(sponsorProfits);
+		Team.setName(escuderiaName);
+		for(i, j = 0; j<2; j++, i++)
+			Team.setPilotos(K.getPilotoVector(i));
+		Team.setSponsor(Sponsor);
+		K.pbackVectorCarro(Temp2);
+		K.pbackVectorSponsor(Sponsor);
+		K.pbackVectorEscuderia(Team);
+		delete [] carName;
+		delete [] carEngine;
+		delete [] sponsorName;
+		delete [] escuderiaName;
+	}
 	pilotosNames.close();
 	pilotosLNames.close();
 	pilotosCountry.close();
@@ -465,6 +503,13 @@ int main (){
 	pilotosPoints.close();
 	pilotosNumbers.close();
 	pilotosPay.close();
+	carNames.close();
+	carEngines.close();
+	sponsorNames.close();
+	sponsorProfit.close();
+	escuderias.close();
+	}
+	///////////////////////////FIN PILOTOS//////////////////////////////////
 	/////////////////////////////////////////////////////ARCHIVO LEIDO////////////////////////////////////////////////
 	praseleccion();
 	return 0;
