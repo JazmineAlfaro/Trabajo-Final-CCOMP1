@@ -1,6 +1,6 @@
 #include<iostream>
 #include <vector>
-#include <string.h>
+#include <string>
 #include "persona.h"
 #include "carro.h"
 #include "patrocinadores.h"
@@ -395,4 +395,16 @@ void Database::deleteVectorEscuderia(int i){
 void Database::pbackVectorPiloto(Piloto P){
 	storePiloto.push_back(P);
 	numPilotos++;
+}
+void Database::pbackVectorCarro(Car C){
+	storeCar.push_back(C);
+	numCarros++;
+}
+void Database::pbackVectorSponsor(Patrocinadores P){
+	storeSponsor.push_back(P);
+	numSponsors++;
+}
+void Database::pbackVectorEscuderia(Escuderia E){
+	storeEscuderia.push_back(E);
+	numEscuderias++;
 }
