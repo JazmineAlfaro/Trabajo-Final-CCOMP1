@@ -29,10 +29,10 @@ void Escuderia::eliminarPilotos(int i){
 	vector<Piloto> temp;
 	int j;
 	for(j = 0; j < i; j++)
-		temp[j] = pilotos[j];
+		temp.push_back(pilotos.at(j));
 	j++;
 	for(j; j<numPilotoss; j++)
-		temp[j] = pilotos[j];
+		temp.push_back(pilotos.at(j));
 	numPilotoss--;
 	this->pilotos = temp; 
 }
@@ -44,12 +44,12 @@ void Escuderia::eliminarSponsors(int i){
 	vector<Patrocinadores> temp;
 	int j;
 	for(j = 0; j<i; j++)
-		temp[j] = sponsors[j];
+		temp.push_back(sponsors.at(j));
 	j++;
 	for(j; j<numSponsorss; j++)
-		temp[j] = sponsors[j];
+		temp.push_back(sponsors.at(j));
 	numSponsorss--;
-	this->sponsors = temp;
+	this->sponsors = temp; 
 }
 void Escuderia::setName(string neim){this->name = neim;}
 void Escuderia::setMecanicos(Persona Mecanico){;}
@@ -87,6 +87,7 @@ void Escuderia::imprimirPilotos(){
 		cout << G.getname() << " " << G.getLastName() << endl;
 	}
 }
+
 
 
 
