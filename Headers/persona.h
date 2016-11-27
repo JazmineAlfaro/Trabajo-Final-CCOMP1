@@ -1,24 +1,24 @@
+#include <string>
 class Persona{
-
+	
 protected:
-	char* name;
-	char* lastname;
+	std::string name;
+	std::string lastname;
 	int age;
-	char* country; //nationality
+	std::string country; //nationality
 	char sex;
 public:
 	Persona();
 	int getAge();
-	char* getname();
-	char* getCountry();
+	std::string getname();
+	std::string getCountry();
 	char getSex();
 	void setAge(int eish);
-	void setName(char* neim);
-	void setCountry(char* contri);
+	void setName(std::string neim);
+	void setCountry(std::string contri);
 	void setSex(char sexo);
-	void setLastName(char* apellido);
+	void setLastName(std::string apellido);
 	void printSex();
-	char* getLastName();
+	std::string getLastName();
 	
 };
-
