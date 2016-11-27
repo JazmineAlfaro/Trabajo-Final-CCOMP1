@@ -36,7 +36,7 @@ int DatabaseModifyPil::selectDataPilotos(){
 void DatabaseModifyPil::modificarNombre(Piloto P, int i){
 	DatabaseAsk H;
 	cout << "Usted va a modificar el nombre." << endl;
-	char* newName = H.askName();
+	string newName = H.askName();
 	P.setName(newName);
 	Database K;
 	K.modificarPilotoVector(P, i);
@@ -44,7 +44,7 @@ void DatabaseModifyPil::modificarNombre(Piloto P, int i){
 void DatabaseModifyPil::modificarApellido(Piloto P, int i){
 	DatabaseAsk H;
 	cout << "Usted va a modificar el apellido." << endl;
-	char* newLName = H.askLName();
+	string newLName = H.askLName();
 	P.setLastName(newLName);
 	Database K;
 	K.modificarPilotoVector(P, i);
@@ -60,7 +60,7 @@ void DatabaseModifyPil::modificarEdad(Piloto P, int i){
 void DatabaseModifyPil::modificarPais(Piloto P, int i){
 	DatabaseAsk H;
 	cout << "Usted va a modificar el pais." << endl;
-	char* newCountry = H.askCountry();
+	string newCountry = H.askCountry();
 	P.setCountry(newCountry);
 	Database K;
 	K.modificarPilotoVector(P, i);
@@ -142,10 +142,11 @@ void DatabaseModifyPil::modifyPiloto(){
 	if (K.getNumPilotos() == 0){
 		cout << "No hay datos para modificar. " << endl;
 	} else {
-	piloto = choosePilotos();
-	selectData = selectDataPilotos();
-	piloto--;
-	miPiloto = K.getPilotoVector(piloto);
-	selecmodificacion(selectData, piloto, miPiloto);
+		piloto = choosePilotos();
+		selectData = selectDataPilotos();
+		piloto--;
+		miPiloto = K.getPilotoVector(piloto);
+		selecmodificacion(selectData, piloto, miPiloto);
 	}
 }
+
