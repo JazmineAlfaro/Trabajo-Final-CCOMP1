@@ -6,17 +6,14 @@ Car::Car(){
 	this->name = " ";
 	this->engine = " ";
 }
-void Car::setName(char* neim){
+void Car::setName(string neim){
 	this->name = neim;
 }
-void Car::setEngine(char* eng){this->engine = eng;}
-char* Car::getName(){return name;}
-char* Car::getEngine(){return engine;}
+void Car::setEngine(string eng){this->engine = eng;}
+string Car::getName(){return name;}
+string Car::getEngine(){return engine;}
 void Car::imprimirCarro(){
 	cout << "Coche:  " << name << endl;
 	cout << "Motor:  " << engine << endl;
 }
-/*std::ostream& Car::operator<<(std::ostream& output, const Car &C){
-	output << "Coche: " << C.name << '\n' << "Motor: " << C.engine << '\n';
-	return output;
-}*/
+
