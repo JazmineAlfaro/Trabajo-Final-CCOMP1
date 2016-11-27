@@ -45,12 +45,6 @@ char Database::yaIngresoRpta(){
 	cin >> rpta;
 	return rpta;
 }
-bool Database::ingresarMas(char rpta){
-	if ((rpta == 'S') || (rpta == 's'))
-		return true;
-	else
-		return false;
-}
 bool Database::yaIngreso(char rpta){
 	if ((rpta == 'S') || (rpta == 's'))
 		return true;
