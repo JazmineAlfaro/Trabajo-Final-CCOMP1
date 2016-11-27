@@ -402,7 +402,6 @@ void seleccionmenu4(){
 }
 int main (){
 	/////////////////////////////////////////LEYENDO ARCHIVOS .txt ///////////////////////////
-	///////////////////////////PILOTOS /////////////////
 	ifstream pilotosNames, pilotosLNames, pilotosCountry, pilotosAge, pilotosPoints, pilotosPay, pilotosNumbers;
 	ifstream carNames, carEngines;
 	ifstream sponsorNames, sponsorProfit;
@@ -434,9 +433,6 @@ int main (){
 	char sex;
 	int sponsorProfits;
 	string myCarName, myCarEngine, mySponsorName, myEscuderiaName;
-	Car Temp2;
-	Patrocinadores Sponsor;
-	Escuderia Team;
 	//while(!pilotosNumbers.eof()){
 	for(cont1 = 0; cont1 < 22; cont1++){
 		getline(pilotosNames, myName);
@@ -452,8 +448,11 @@ int main (){
 		K.pbackVectorPiloto(Temp);
 	}
 	//while(!carNames.eof()){
+	int j = 0;
 	for(cont2 = 0; cont2 < 11; cont2++){
-		int j;
+		Car Temp2;
+		Patrocinadores Sponsor;
+		Escuderia Team;
 		getline(carNames, myCarName);
 		getline(carEngines, myCarEngine);
 		getline(sponsorNames, mySponsorName);
@@ -464,12 +463,14 @@ int main (){
 		Sponsor.setName(mySponsorName);
 		Sponsor.setIngresos(sponsorProfits);
 		Team.setName(myEscuderiaName);
-		for(i, j = 0; j<2; j++, i++)
-			Team.setPilotos(K.getPilotoVector(i));
+		Team.setPilotos(K.getPilotoVector(j*2));
+		Team.setPilotos(K.getPilotoVector(j*2 +1));
 		Team.setSponsor(Sponsor);
+		Team.setCarro(Temp2);
 		K.pbackVectorCarro(Temp2);
 		K.pbackVectorSponsor(Sponsor);
 		K.pbackVectorEscuderia(Team);
+		j++;
 	}
 	pilotosNames.close();
 	pilotosLNames.close();
@@ -484,10 +485,10 @@ int main (){
 	sponsorProfit.close();
 	escuderias.close();
 	}
-	///////////////////////////FIN PILOTOS//////////////////////////////////
-	/////////////////////////////////////////////////////ARCHIVO LEIDO////////////////////////////////////////////////
+	/////////////////////////////////////////////////////ARCHIVOS LEIDOS////////////////////////////////////////////////
 	praseleccion();
 	return 0;
 }
+
 
 
