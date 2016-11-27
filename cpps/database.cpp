@@ -8,7 +8,6 @@
 #include "piloto.h"
 #include "databaseask.h"
 #include "database.h"
-	//template <typename T>;
 	
 using namespace std;
 
@@ -34,12 +33,25 @@ Database::Database(){
 	DatabaseAsk Test;
 	this->myDB = Test;
 }
-
-
-bool Database::ingresarMas(){
-	cout << "¿Desea agregar otro valor?(s/n)" << endl;
+char Database::ingresarMasRpta(){
+	cout << "Desea agregar otro valor?(s/n)" << endl;
 	char rpta;
 	cin >> rpta;
+	return rpta;
+}
+char Database::yaIngresoRpta(){
+	cout << "Ya estan agregados los datos?(s/n)" << endl;
+	char rpta;
+	cin >> rpta;
+	return rpta;
+}
+bool Database::ingresarMas(char rpta){
+	if ((rpta == 'S') || (rpta == 's'))
+		return true;
+	else
+		return false;
+}
+bool Database::yaIngreso(char rpta){
 	if ((rpta == 'S') || (rpta == 's'))
 		return true;
 	else
@@ -102,6 +114,29 @@ void Database::menuIngrPil(){
 	numPilotos++;
 	storePiloto.push_back(newPiloto);
 }
+Piloto Database::ingrPilEscu(){
+	Piloto newPiloto;
+	char* name;
+	name = myDB.askName();
+	char* lname;
+	lname = myDB.askLName();
+	int age = myDB.askAge();
+	char sex = myDB.askSex();
+	char* country = myDB.askCountry();
+	int points = myDB.askPoints();
+	int pay = myDB.askPay();
+	int number = myDB.askNumber();
+	newPiloto.setAge(age);
+	newPiloto.setCountry(country);
+	newPiloto.setLastName(lname);
+	newPiloto.setName(name);
+	newPiloto.setNumber(number);
+	newPiloto.setPay(pay);
+	newPiloto.setSex(sex);
+	numPilotos++;
+	storePiloto.push_back(newPiloto);
+	return newPiloto;
+}
 void Database::getPiloto(){
 	int i;
 	Piloto Get;
@@ -132,6 +167,16 @@ void Database::menuIngrCoc(){
 	numCarros++;
 	storeCar.push_back(newCar);
 }
+Car ingrCocEscu(){
+	Car newCar;
+	char* myName = myDB.askName();
+	char* myEngine = myDB.askEngine();
+	newCar.setEngine(myEngine);
+	newCar.setName(myName);
+	numCarros++;
+	storeCar.push_back(newCar);
+	return newCar;
+}
 void Database::getCarro(){
 	int i;
 	Car Get;
@@ -157,6 +202,16 @@ void Database::menuIngrSpon(){
 	numSponsors++;
 	storeSponsor.push_back(newSponsor);
 }
+Patrocinadores Database::ingrSponEscu(){
+	Patrocinadores newSponsor;
+	char* myName = myDB.askName();
+	int myIngresos = myDB.askIngresos();
+	newSponsor.setIngresos(myIngresos);
+	newSponsor.setName(myName);
+	numSponsors++;
+	storeSponsor.push_back(newSponsor);
+	return newSponsor;
+}
 void Database::getSponsor(){
 	int i;
 	Patrocinadores Get;
@@ -173,43 +228,66 @@ void Database::getSponsor(){
 }
 int Database::getNumEscuderias(){return numEscuderias;}
 void Database::menuIngrEsc(){
-	int i;
+	int i, j;
+	j = 0;
 	Escuderia newEscuderia;
 	char* myName = myDB.askName();
 	newEscuderia.setName(myName);
+	if(yaIngreso(yaIngresoRpta())){
 	//agregando carro
-	getCarro();
-	i = myDB.askNumber();
-	if ((i == 0) || (i>numCarros)){
-		cout << "Ingrese un numero valido." << endl;
+		getCarro();
 		i = myDB.askNumber();
-	} else if (i <= numCarros){
-		newEscuderia.setCarro(storeCar[i-1]); 
+		if ((i == 0) || (i>numCarros)){
+			cout << "Ingrese un numero valido." << endl;
+			i = myDB.askNumber();
+		} else if (i <= numCarros){
+			newEscuderia.setCarro(storeCar[i-1]); 
+		}
+	} else {
+		newEscuderia.setCarro(ingrCocEscu());
 	}
 	//agregando auspiciadores a peticion del usuario
-	do{
-		getSponsor();
-		i = myDB.askNumber();
-		if ((i == 0)||(i>numSponsors)){
-			cout << "Ingrese un numero valido." << endl;
+	if(yaIngreso(yaIngresoRpta())){
+		do{
+			getSponsor();
 			i = myDB.askNumber();
-		} else if (i<= numSponsors){
-			newEscuderia.setSponsor(storeSponsor[i-1]);
+			if ((i == 0)||(i>numSponsors)){
+				cout << "Ingrese un numero valido." << endl;
+				i = myDB.askNumber();
+			} else if (i<= numSponsors){
+				newEscuderia.setSponsor(storeSponsor[i-1]);
+			}
+		}while(ingresarMas(ingresarMasRpta()));
+	} else{
+		do{
+			cout << "Ingresando auspiciadores: " << endl;
+			newEscuderia.setSponsor(ingrSponEscu());
 		}
-	}while(ingresarMas());
+		while(ingresarMas(ingresarMasRpta()));
+	}
 	//agregando pilotos a peticion del usuario
-	do{
-		getPiloto();
-		i = myDB.askNumber();
-		if ((i == 0)||(i>numPilotos)){
-			cout << "Ingrese un numero valido." << endl;
+	if(yaIngreso(yaIngresoRpta())){
+		do{
+			getPiloto();
 			i = myDB.askNumber();
-		} else if (i <= numPilotos) {
-			newEscuderia.setPilotos(storePiloto[i-1]);
-		}
-	}while(ingresarMas());
+			if ((i == 0)||(i>numPilotos)){
+				cout << "Ingrese un numero valido." << endl;
+				i = myDB.askNumber();
+			} else if (i <= numPilotos) {
+				newEscuderia.setPilotos(storePiloto[i-1]);
+				j++;
+			}
+		}while(j<2); //2 pilotos por escuderia
+	} else {
+		do{
+		cout << "Ingresando pilotos: " << endl;
+		cout << "Piloto: " << j+1 << endl;	
+		j++;
+		newEscuderia.setPilotos(ingrPilEscu());
+		}while(j<2);
+	}
 	numEscuderias++;
-	storeEscuderia.push_back(newEscuderia); //Agregar el booleano que pregunta si quieres agregar mas datos CHECK
+	storeEscuderia.push_back(newEscuderia);
 }
 void Database::getEscuderia(){
 	int i;
@@ -314,6 +392,7 @@ void Database::deleteVectorEscuderia(int i){
 	storeEscuderia = temp;
 	numEscuderias--;
 }
-void Database::pbackVectorPersona(Persona P){
-	storePersona.push_back(P);
+void Database::pbackVectorPiloto(Piloto P){
+	storePiloto.push_back(P);
+	numPilotos++;
 }
