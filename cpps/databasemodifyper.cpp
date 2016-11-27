@@ -32,7 +32,7 @@ int DatabaseModifyPer::selectDataPersonas(){
 void DatabaseModifyPer::modificarNombre(Persona P, int i){
 	DatabaseAsk H;
 	cout << "Usted va a modificar el nombre." << endl;
-	char* newName = H.askName();
+	string newName = H.askName();
 	P.setName(newName);
 	Database K;
 	K.modificarPersonaVector(P, i);
@@ -40,7 +40,7 @@ void DatabaseModifyPer::modificarNombre(Persona P, int i){
 void DatabaseModifyPer::modificarApellido(Persona P, int i){
 	DatabaseAsk H;
 	cout << "Usted va a modificar el apellido." << endl;
-	char* newLName = H.askLName();
+	string newLName = H.askLName();
 	P.setLastName(newLName);
 	Database K;
 	K.modificarPersonaVector(P, i);
@@ -56,7 +56,7 @@ void DatabaseModifyPer::modificarEdad(Persona P, int i){
 void DatabaseModifyPer::modificarPais(Persona P, int i){
 	DatabaseAsk H;
 	cout << "Usted va a modificar el pais." << endl;
-	char* newCountry = H.askCountry();
+	string newCountry = H.askCountry();
 	P.setCountry(newCountry);
 	Database K;
 	K.modificarPersonaVector(P, i);
@@ -94,10 +94,10 @@ void DatabaseModifyPer::modifyPersona(){
 	if (K.getNumPersonas() == 0){
 		cout << "No hay datos para modificar." << endl;
 	} else {
-	persona = choosePersonas();
-	selectData = selectDataPersonas();
-	persona--;
-	miPersona = K.getPersonaVector(persona);
-	selecmodificacion(selectData, persona, miPersona);
+		persona = choosePersonas();
+		selectData = selectDataPersonas();
+		persona--;
+		miPersona = K.getPersonaVector(persona);
+		selecmodificacion(selectData, persona, miPersona);
 	}
 }
