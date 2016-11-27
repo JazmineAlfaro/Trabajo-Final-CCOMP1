@@ -93,3 +93,5 @@ Seguir las instrucciones en pantalla según lo que quiera visualizar.
 ### Tomar en cuenta:
 
 - Al borrar un piloto de una escuderia, no lo está borrando de la base de datos. Lo mismo aplica si borra un piloto desde el menú de eliminar pilotos. Si desea eliminar al piloto tanto de la escuderia como de la base de datos, deberá hacerlo manualmente.
+
+- Lo de arriba afecta también a los patrocinadores.
