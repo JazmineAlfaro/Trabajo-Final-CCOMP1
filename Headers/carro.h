@@ -1,13 +1,15 @@
+#include <string>
+
 class Car{
 private:
-	char* name;
-	char* engine;
+	std::string name;
+	std::string engine;
 public:
 	Car();
-	void setName(char* neim);
-	void setEngine(char* eng);
-	char* getName();
-	char* getEngine();
+	void setName(std::string neim);
+	void setEngine(std::string eng);
+	std::string getName();
+	std::string getEngine();
 	void imprimirCarro();
 	
 };
