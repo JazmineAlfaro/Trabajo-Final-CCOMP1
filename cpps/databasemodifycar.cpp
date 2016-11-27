@@ -29,7 +29,7 @@ int DatabaseModifyCar::selectDataCars(){
 void DatabaseModifyCar::modificarNombre(Car P, int i){
 	DatabaseAsk H;
 	cout << "Usted va a modificar el nombre." << endl;
-	char* newName = H.askName();
+	string newName = H.askName();
 	P.setName(newName);
 	Database K;
 	K.modificarCarVector(P, i);
@@ -37,7 +37,7 @@ void DatabaseModifyCar::modificarNombre(Car P, int i){
 void DatabaseModifyCar::modificarMotor(Car P, int i){
 	DatabaseAsk H;
 	cout << "Usted va a modificar el motor." << endl;
-	char* newEngine = H.askEngine();
+	string newEngine = H.askEngine();
 	P.setEngine(newEngine);
 	Database K;
 	K.modificarCarVector(P, i);
@@ -55,13 +55,9 @@ void DatabaseModifyCar::selecmodificacion(int i, int k, Car p){
 void DatabaseModifyCar::modifyCar(){
 	int carro, selectData;
 	Database K; Car miCarro;
-	if (K.getNumCarros() == 0){
-		cout << "No hay coches que modificar." << endl;
-	} else {
 	carro = chooseCars();
 	selectData = selectDataCars();
 	carro--;
 	miCarro = K.getCarVector(carro);
 	selecmodificacion(selectData, carro, miCarro);
-	}
 }
