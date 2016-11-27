@@ -8,7 +8,7 @@
 #include "piloto.h"
 #include "databaseask.h"
 #include "database.h"
-	
+
 using namespace std;
 
 int Database::numPersonas = 0;
@@ -61,12 +61,12 @@ int Database::getNumPersonas(){return numPersonas;}
 
 void Database::menuIngrPer(){
 	Persona newPersona;
-	char* name;
+	string name;
 	name = myDB.askName();
-	char* lname = myDB.askLName();
+	string lname = myDB.askLName();
 	int age = myDB.askAge();
 	char sex = myDB.askSex();
-	char* country = myDB.askCountry();
+	string country = myDB.askCountry();
 	newPersona.setAge(age);
 	newPersona.setCountry(country);
 	newPersona.setName(name);
@@ -94,13 +94,13 @@ void Database::getPersona(){
 int Database::getNumPilotos(){return numPilotos;}
 void Database::menuIngrPil(){
 	Piloto newPiloto;
-	char* name;
+	string name;
 	name = myDB.askName();
-	char* lname;
+	string lname;
 	lname = myDB.askLName();
 	int age = myDB.askAge();
 	char sex = myDB.askSex();
-	char* country = myDB.askCountry();
+	string country = myDB.askCountry();
 	int points = myDB.askPoints();
 	int pay = myDB.askPay();
 	int number = myDB.askNumber();
@@ -116,13 +116,13 @@ void Database::menuIngrPil(){
 }
 Piloto Database::ingrPilEscu(){
 	Piloto newPiloto;
-	char* name;
+	string name;
 	name = myDB.askName();
-	char* lname;
+	string lname;
 	lname = myDB.askLName();
 	int age = myDB.askAge();
 	char sex = myDB.askSex();
-	char* country = myDB.askCountry();
+	string country = myDB.askCountry();
 	int points = myDB.askPoints();
 	int pay = myDB.askPay();
 	int number = myDB.askNumber();
@@ -160,8 +160,8 @@ void Database::getPiloto(){
 int Database::getNumCarros(){return numCarros;}
 void Database::menuIngrCoc(){
 	Car newCar;
-	char* myName = myDB.askName();
-	char* myEngine = myDB.askEngine();
+	string myName = myDB.askName();
+	string myEngine = myDB.askEngine();
 	newCar.setEngine(myEngine);
 	newCar.setName(myName);
 	numCarros++;
@@ -169,8 +169,8 @@ void Database::menuIngrCoc(){
 }
 Car Database::ingrCocEscu(){
 	Car newCar;
-	char* myName = myDB.askName();
-	char* myEngine = myDB.askEngine();
+	string myName = myDB.askName();
+	string myEngine = myDB.askEngine();
 	newCar.setEngine(myEngine);
 	newCar.setName(myName);
 	numCarros++;
@@ -188,14 +188,14 @@ void Database::getCarro(){
 			cout << "Carro " << i+1 << endl;
 			cout << "Nombre: " << Get.getName() << endl;
 			cout << "Motor: " << Get.getEngine() << endl;
-		//cout << Get;
+			//cout << Get;
 		}
 	}
 }
 int Database::getNumSpon(){return numSponsors;}
 void Database::menuIngrSpon(){
 	Patrocinadores newSponsor;
-	char* myName = myDB.askName();
+	string myName = myDB.askName();
 	int myIngresos = myDB.askIngresos();
 	newSponsor.setIngresos(myIngresos);
 	newSponsor.setName(myName);
@@ -204,7 +204,7 @@ void Database::menuIngrSpon(){
 }
 Patrocinadores Database::ingrSponEscu(){
 	Patrocinadores newSponsor;
-	char* myName = myDB.askName();
+	string myName = myDB.askName();
 	int myIngresos = myDB.askIngresos();
 	newSponsor.setIngresos(myIngresos);
 	newSponsor.setName(myName);
@@ -231,10 +231,10 @@ void Database::menuIngrEsc(){
 	int i, j;
 	j = 0;
 	Escuderia newEscuderia;
-	char* myName = myDB.askName();
+	string myName = myDB.askName();
 	newEscuderia.setName(myName);
 	if(yaIngreso(yaIngresoRpta())){
-	//agregando carro
+		//agregando carro
 		getCarro();
 		i = myDB.askNumber();
 		if ((i == 0) || (i>numCarros)){
@@ -280,10 +280,10 @@ void Database::menuIngrEsc(){
 		}while(j<2); //2 pilotos por escuderia
 	} else {
 		do{
-		cout << "Ingresando pilotos: " << endl;
-		cout << "Piloto: " << j+1 << endl;	
-		j++;
-		newEscuderia.setPilotos(ingrPilEscu());
+			cout << "Ingresando pilotos: " << endl;
+			cout << "Piloto: " << j+1 << endl;	
+			j++;
+			newEscuderia.setPilotos(ingrPilEscu());
 		}while(j<2);
 	}
 	numEscuderias++;
