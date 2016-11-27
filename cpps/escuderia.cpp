@@ -8,7 +8,6 @@
 using namespace std;
 
 Escuderia::Escuderia(){
-	//Persona Jefito;
 	Patrocinadores *a;
 	a = new Patrocinadores[0];
 	Piloto *b;
@@ -18,7 +17,6 @@ Escuderia::Escuderia(){
 	this->numSponsorss = 0;
 	this->Sponsors = a;
 	this->Pilotos = b;
-	//this->jefeDeIngenieros = Jefito;
 	this->carro = carrito;
 	this->name = " ";
 	
@@ -32,7 +30,7 @@ void Escuderia::setPilotos(Piloto Driver){
 	numPilotoss++;
 	a[i] = Driver;
 	delete [] Pilotos;
-	this->Pilotos = a;//ARREGLAR
+	this->Pilotos = a;
 }
 
 void Escuderia::eliminarPilotos(int i){
@@ -72,12 +70,10 @@ void Escuderia::eliminarSponsors(int i){
 	delete[] Sponsors;
 	this->Sponsors = a;
 }
-void Escuderia::setName(char* neim){this->name = neim;}
-void Escuderia::setJefe(Persona Jefe){/*this->jefeDeIngenieros = Jefe*/;}
+void Escuderia::setName(string neim){this->name = neim;}
 void Escuderia::setMecanicos(Persona Mecanico){;}
 void Escuderia::setCarro(Car car){this->carro = car;}
-char* Escuderia::getName(){return name;}
-Persona Escuderia::getJefito(){/*return jefeDeIngenieros*/;}
+string Escuderia::getName(){return name;}
 Car Escuderia::getCarro(){return carro;}
 Patrocinadores Escuderia::getSponsor(int pos){
 	int i;
