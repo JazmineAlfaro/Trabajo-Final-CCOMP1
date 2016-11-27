@@ -37,26 +37,36 @@ void DatabaseModifyEscu::modificarNombre(Escuderia E, int i){
 	K.modificarEscuderiaVector(E, i);
 }
 void DatabaseModifyEscu::agregarPiloto(Escuderia E, int i){
-	DatabaseAsk H;
+	DatabaseAsk H; Database K;
 	Piloto Driver;
+	char rpta = K.yaIngresoRpta();
+	bool ingreso = K.yaIngreso(rpta);
+	if(ingreso){
 	cout << "Usted va a agregar un piloto." << endl;
 	int j;
-	Database K;
 	K.getPiloto();
 	j = H.askNumber();
 	Driver = K.getPilotoVector(j-1);
+	} else {
+		Driver = K.ingrPilEscu();
+	}
 	E.setPilotos(Driver);
 	K.modificarEscuderiaVector(E, i);
 }
 void DatabaseModifyEscu::agregarSponsor(Escuderia E, int i){
-	DatabaseAsk H;
+	DatabaseAsk H; Database K;
 	Patrocinadores Sponsor;
+	char rpta = K.yaIngresoRpta();
+	bool ingreso = K.yaIngreso(rpta);
+	if(ingreso){
 	cout << "Usted va a agregar un auspiciador." << endl;
 	int j;
-	Database K;
 	K.getSponsor();
 	j = H.askNumber();
 	Sponsor = K.getSponsorVector(j-1);
+	} else {
+		Sponsor = K.ingrSponEscu();
+	}
 	E.setSponsor(Sponsor);
 	K.modificarEscuderiaVector(E, i);
 }
