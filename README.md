@@ -29,7 +29,7 @@ Seguir las instrucciones en pantalla.
 1. Nombre (sin espacios)
 2. Ingresos
 
-- Al ingresar una escuderia, ya se debe tener ingresado por lo menos:
+- Al ingresar una escuderia, se puede tener ingresado por lo menos: (tener en cuenta que si ya están ingresados los datos, se deben tener los 3 ya ingresados)
 
 1. Un piloto.
 2. Un carro.
@@ -37,7 +37,7 @@ Seguir las instrucciones en pantalla.
 
 ### Al visualizar datos
 
-Seguir las instrucciones en pantalla según lo que quiera visualizar.
+Seguir las instrucciones en pantalla según lo que quiera visualizar. 
 
 ### Al modificar datos
 
@@ -66,11 +66,11 @@ Seguir las instrucciones en pantalla según lo que quiera visualizar.
 1. Nombre
 2. Ingresos
 
-- A una escuderia se le puede modificar:
+- A una escuderia se le puede modificar (solo agregar en algunos casos):
 
 1. Nombre
-2. La lista de Pilotos
-3. La lista de Auspiciadores
+2. La lista de Pilotos (agregar un piloto, por ejemplo, el de reserva). No es necesario tener el piloto ya ingresado, lo puede ingresar en este momento.
+3. La lista de Auspiciadores (agregar más auspiciadores). No es necesario tener el auspiciador ya ingresado, lo puede ingresar en este momento.
 
 ### Al eliminar datos
 
@@ -82,8 +82,14 @@ Seguir las instrucciones en pantalla según lo que quiera visualizar.
 
 ### Sugerencias:
 
-- Al ingresar el sexo ya sea de una persona o de un piloto, solo se debe usar UN caracter (preferiblemente 'M' de male o 'F' de female).
+- Al ingresar el sexo ya sea de una persona o de un piloto, solo se debe usar UN caracter (preferiblemente 'M' de male o 'F' de female, y en mayúsucula).
 
-- Al agregar un auspiciador, no ponga espacios o forzará la detención de la base de datos.
+- Al agregar un auspiciador, no ponga espacios o forzará la detención de la base de datos. 
+
+- El punto anterior también aplica para cualquier campo de texto que se le pida llenar. Entonces, si quiere ingresar una escuderia llamada "Red Bull" deberá hacerlo ingresando "RedBull".
 
 - El uso de los archivos .txt es completamente opcional. En caso de no usarlos simplemente saldrá el mensaje "Archivo no encontrado". 
+
+### Tomar en cuenta:
+
+- Al borrar un piloto de una escuderia, no lo está borrando de la base de datos. Lo mismo aplica si borra un piloto desde el menú de eliminar pilotos. Si desea eliminar al piloto tanto de la escuderia como de la base de datos, deberá hacerlo manualmente.
