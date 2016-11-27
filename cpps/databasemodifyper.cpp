@@ -91,9 +91,13 @@ void DatabaseModifyPer::selecmodificacion(int i, int k, Persona p){
 void DatabaseModifyPer::modifyPersona(){
 	int persona, selectData;
 	Database K; Persona miPersona;
+	if (K.getNumPersonas() == 0){
+		cout << "No hay datos para modificar." << endl;
+	} else {
 	persona = choosePersonas();
 	selectData = selectDataPersonas();
 	persona--;
 	miPersona = K.getPersonaVector(persona);
 	selecmodificacion(selectData, persona, miPersona);
+	}
 }
