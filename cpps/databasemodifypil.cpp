@@ -1,7 +1,7 @@
 #include<iostream>
 #include <cstdlib> 
 #include <vector>
-#include <string.h>
+#include <string>
 #include "persona.h"
 #include "carro.h"
 #include "patrocinadores.h"
@@ -9,7 +9,6 @@
 #include "piloto.h"
 #include "databaseask.h"
 #include "database.h"
-#include "databasemodifyper.h"
 #include "databasemodifypil.h"
 
 int DatabaseModifyPil::choosePilotos(){
@@ -140,9 +139,13 @@ void DatabaseModifyPil::selecmodificacion(int i, int k, Piloto p){
 void DatabaseModifyPil::modifyPiloto(){
 	int piloto, selectData;
 	Database K; Piloto miPiloto;
+	if (K.getNumPilotos() == 0){
+		cout << "No hay datos para modificar. " << endl;
+	} else {
 	piloto = choosePilotos();
 	selectData = selectDataPilotos();
 	piloto--;
 	miPiloto = K.getPilotoVector(piloto);
 	selecmodificacion(selectData, piloto, miPiloto);
+	}
 }
