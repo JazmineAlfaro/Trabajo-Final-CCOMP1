@@ -1,5 +1,4 @@
 #include <iostream>
-//template <typename T>;
 using namespace std;
 class Database{
 private:
@@ -16,21 +15,24 @@ private:
 	DatabaseAsk myDB;
 public:
 	Database();
-	void instEscudCar();
-	void instEscudPil();
-	void instEscudSpon();
-	bool ingresarMas();
+	char ingresarMasRpta();
+	char yaIngresoRpta();
+	bool ingresarMas(char rpta);
+	bool yaIngreso(char rpta);
 	int getNumPersonas();
 	void menuIngrPer();
 	void getPersona();
 	int getNumPilotos();
 	void menuIngrPil();
+	Piloto ingrPilEscu();
 	void getPiloto();
 	int getNumCarros();
 	void menuIngrCoc();
+	Car ingrCocEscu();
 	void getCarro();
 	int getNumSpon();
 	void menuIngrSpon();
+	Patrocinadores ingrSponEscu();
 	void getSponsor();
 	int getNumEscuderias();
 	void menuIngrEsc();
@@ -50,4 +52,5 @@ public:
 	void deleteVectorCar(int i);
 	void deleteVectorSponsor(int i);
 	void deleteVectorEscuderia(int i);
+	void pbackVectorPiloto(Piloto P);
 };
