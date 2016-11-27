@@ -2,7 +2,7 @@
 #include<fstream>
 #include <cstdlib> 
 #include <vector>
-#include <string.h>
+#include <string>
 #include "persona.h"
 #include "carro.h"
 #include "patrocinadores.h"
@@ -29,7 +29,7 @@ Erase Borrar;
 void instrucciones(){
 	cout << "Oprima los numeros segun lo que desee hacer." << endl;
 }
-// menu
+//primer menu
 void menu(){
 	instrucciones();
 	cout << 1 << " para ingresar datos" << endl;
@@ -101,7 +101,6 @@ void menu4(){
 	cout << 6 << " para regresar al menu anterior" << endl;
 	cout << 7 << " para salir de la base de datos" << endl;
 }
-//funcion que va a llamar cuando apretas 1
 void menuIngPer(){
 	instruccionesIngPer();
 	DB.menuIngrPer();
@@ -403,41 +402,69 @@ void seleccionmenu4(){
 }
 int main (){
 	/////////////////////////////////////////LEYENDO EL ARCHIVO .txt ///////////////////////////
-	/*ifstream pilotos;
-	pilotos.open("f12016pilotos.txt");
-	if (pilotos.fail()){
-		cerr << "Error abriendo archivo f120166pilotos.txt" << endl;
-	} else {
+	ifstream pilotosNames, pilotosLNames, pilotosCountry, pilotosAge, pilotosPoints, pilotosPay, pilotosNumbers;
+	pilotosNames.open("f12016pilotosnames.txt");
+	pilotosLNames.open("f12016pilotoslnames.txt");
+	pilotosCountry.open("f12016pilotoscountry.txt");
+	pilotosAge.open("f12016pilotosage.txt");
+	pilotosPoints.open("f12016pilotospoints.txt");
+	pilotosPay.open("f12016pilotospay.txt");
+	pilotosNumbers.open("f12016pilotosnumbers.txt");
+	if ((pilotosNames.fail()) || (pilotosLNames.fail()) || (pilotosCountry.fail()) || (pilotosAge.fail()) || (pilotosPoints.fail()) || (pilotosPay.fail()) || (pilotosNumbers.fail())){
+		cerr << "Error abriendo algun archivo" << endl;
+	}
 	int i;
+	//for (i = 0; i<20; i++){
+	Piloto Temp;
+	Database K;
 	char* name;
 	char* lname;
 	char* country;
+	string myName, myLName, myCountry;
 	int age, points, pay, number;
 	char sex;
-	//for (i = 0; i<22; i++){
-	//for (std::string line; getline(name >> lname >> age >> country >> sex >> points >> pay >> number, line);){
-	while(!pilotos.eof()){
-		Piloto Temp;
+	while(!pilotosNumbers.eof()){
+		/*Piloto Temp;
 		Database K;
 		char* name;
 		char* lname;
 		char* country;
 		int age, points, pay, number;
-		char sex;
-		//char* mname = name;
-		//char* mlname = lname;
-		//char* mcountry = country;
-		pilotos >> name >> lname;
-		pilotos >> age;
-		pilotos >> country;
-		pilotos >> sex;
-		pilotos >> points >> pay >> number;
+		char sex;*/
+		//pilotosNames >> name;
+		//pilotosLNames >> lname;
+		//pilotosCountry >> country;
+		getline(pilotosNames, myName);
+		getline(pilotosLNames, myLName);
+		getline(pilotosCountry, myCountry);
+		name = new char[15];
+		//memcpy(name, myName.c_str(), 15);
+		strcpy(name, myName.c_str());
+		lname = new char[15];
+		//memcpy(lname, myLName.c_str(),15);
+		strcpy(lname, myLName.c_str());
+		country = new char[15];
+		//memcpy(country, myCountry.c_str(), 15);
+		strcpy(country, myCountry.c_str());
+		pilotosAge >> age;
+		pilotosPoints >> points;
+		pilotosNumbers >> number;
+		pilotosPay >> pay;
 		Temp.setName(name); Temp.setLastName(lname); Temp.setCountry(country);
 		Temp.setAge(age); Temp.addPoints(points); Temp.setPay(pay); Temp.setNumber(number);
-		Temp.setSex(sex);
-		K.pbackVectorPersona(Temp);
+		Temp.setSex('M');
+		K.pbackVectorPiloto(Temp);
+		delete [] name;
+		delete [] lname;
+		delete [] country;
 	}
-	}*/
+	pilotosNames.close();
+	pilotosLNames.close();
+	pilotosCountry.close();
+	pilotosAge.close();
+	pilotosPoints.close();
+	pilotosNumbers.close();
+	pilotosPay.close();
 	/////////////////////////////////////////////////////ARCHIVO LEIDO////////////////////////////////////////////////
 	praseleccion();
 	return 0;
