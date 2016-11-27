@@ -76,9 +76,13 @@ void DatabaseModifyEscu::selecmodificacion(int i, int k, Escuderia p){
 void DatabaseModifyEscu::modifyEscuderia(){
 	int escuderia, selectData;
 	Database K; Escuderia miTeam;
+	if (K.getNumEscuderias() == 0){
+		cout << "No hay datos para modificar." << endl;
+	} else {
 	escuderia = chooseEscuderias();
 	selectData = selectDataEscuderias();
 	escuderia--;
 	miTeam = K.getEscuderiaVector(escuderia);
 	selecmodificacion(selectData, escuderia, miTeam);
+	}
 }
