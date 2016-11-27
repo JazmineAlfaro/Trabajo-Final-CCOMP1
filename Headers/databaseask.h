@@ -1,10 +1,11 @@
+#include <string>
 class DatabaseAsk{
 public:
-	char* askName();
-	char* askLName();
+	std::string askName();
+	std::string askLName();
 	int askAge();
 	char askSex();
-	char* askCountry();
+	std::string askCountry();
 	//CHAU PERSONA
 	//Piloto
 	int askPoints();
@@ -12,7 +13,7 @@ public:
 	int askNumber();
 	//CHAU PILOTO
 	//Carro
-	char* askEngine();
+	std::string askEngine();
 	//CHAU CARRO
 	//SPONSOR
 	int askIngresos();
