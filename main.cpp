@@ -425,7 +425,7 @@ int main (){
 		sponsorProfit.fail() || escuderias.fail() ){
 		cerr << "Error abriendo algun archivo" << endl;
 	} else {
-	//for (i = 0; i<20; i++){
+	cout << "Archivos temporada 2016 leidos" << endl;
 	Piloto Temp;
 	Database K;
 	string myName, myLName, myCountry;
@@ -433,7 +433,6 @@ int main (){
 	char sex;
 	int sponsorProfits;
 	string myCarName, myCarEngine, mySponsorName, myEscuderiaName;
-	//while(!pilotosNumbers.eof()){
 	for(cont1 = 0; cont1 < 22; cont1++){
 		getline(pilotosNames, myName);
 		getline(pilotosLNames, myLName);
@@ -447,7 +446,6 @@ int main (){
 		Temp.setSex('M');
 		K.pbackVectorPiloto(Temp);
 	}
-	//while(!carNames.eof()){
 	int j = 0;
 	for(cont2 = 0; cont2 < 11; cont2++){
 		Car Temp2;
@@ -489,6 +487,5 @@ int main (){
 	praseleccion();
 	return 0;
 }
-
 
 
