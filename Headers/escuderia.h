@@ -1,3 +1,5 @@
+#include <string>
+
 class Persona;
 class Piloto;
 class Patrocinadores;
@@ -8,23 +10,19 @@ private:
 	int numPilotoss;
 	Patrocinadores *Sponsors; //puntero a array de Sponsors
 	int numSponsorss;
-	char* name;
-	//Persona jefeDeIngenieros;
-	//Persona *Mecanicos; //puntero a array de Mecanicos
-	//int numMecanicos;
+	std::string name;
 	Car carro;
 public:
 	Escuderia();
-	//Escuderia(Persona Drivers[], int numP, Patrocinadores Pat[], int numS, char* neim, Persona Jefe, Persona Mecs[], int numM, Car car);
 	void setPilotos(Piloto Driver);
 	void eliminarPilotos(int i);
 	void setSponsor(Patrocinadores Sponsor);
 	void eliminarSponsors(int i);
-	void setName(char* neim);
+	void setName(std::string neim);
 	void setJefe(Persona Jefe);
 	void setMecanicos(Persona Mecanico);
 	void setCarro(Car car);
-	char* getName();
+	std::string getName();
 	Persona getJefito();
 	Car getCarro();
 	Patrocinadores getSponsor(int pos);
@@ -33,4 +31,3 @@ public:
 	void imprimirPilotos();
 	
 };
-
