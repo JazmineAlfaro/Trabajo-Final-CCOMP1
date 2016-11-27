@@ -55,9 +55,13 @@ void DatabaseModifyCar::selecmodificacion(int i, int k, Car p){
 void DatabaseModifyCar::modifyCar(){
 	int carro, selectData;
 	Database K; Car miCarro;
+	if (K.getNumCarros() == 0){
+		cout << "No hay coches que modificar." << endl;
+	} else {
 	carro = chooseCars();
 	selectData = selectDataCars();
 	carro--;
 	miCarro = K.getCarVector(carro);
 	selecmodificacion(selectData, carro, miCarro);
+	}
 }
