@@ -90,11 +90,13 @@ void Erase::eraseEscuderia(){
 			cout << "Ingrese el numero del piloto que quiera eliminar." << endl;
 			cin >> k;
 			Temp.eliminarPilotos(k-1);
+			H.modificarEscuderiaVector(Temp, i-1);
 		} else {
 			Temp.imprimirSponsors();
 			cout << "Ingrese el numero del patrocionador que quiera eliminar." << endl;
 			cin >> k;
 			Temp.eliminarSponsors(k-1);
+			H.modificarEscuderiaVector(Temp, i-1);
 		}
 	}
 }
