@@ -1,13 +1,13 @@
+#include <string>
 class Patrocinadores{
 private:
-	char* name;
+	std::string name;
 	int ingresos;
 public:
 	Patrocinadores();
-	char* getName();
+	std::string getName();
 	int getIngresos();
-	void setName(char* neim);
+	void setName(std::string neim);
 	void setIngresos(int ing);
 	
 };
-
