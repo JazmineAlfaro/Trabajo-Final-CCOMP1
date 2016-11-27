@@ -407,6 +407,8 @@ int main (){
 	ifstream carNames, carEngines;
 	ifstream sponsorNames, sponsorProfit;
 	ifstream escuderias;
+	int i, cont1, cont2;
+	i = 0;
 	pilotosNames.open("f12016pilotosnames.txt");
 	pilotosLNames.open("f12016pilotoslnames.txt");
 	pilotosCountry.open("f12016pilotoscountry.txt");
@@ -427,7 +429,6 @@ int main (){
 	//for (i = 0; i<20; i++){
 	Piloto Temp;
 	Database K;
-	int i = 0;
 	string myName, myLName, myCountry;
 	int age, points, pay, number;
 	char sex;
@@ -436,7 +437,8 @@ int main (){
 	Car Temp2;
 	Patrocinadores Sponsor;
 	Escuderia Team;
-	while(!pilotosNumbers.eof()){
+	//while(!pilotosNumbers.eof()){
+	for(cont1 = 0; cont1 < 22; cont1++){
 		getline(pilotosNames, myName);
 		getline(pilotosLNames, myLName);
 		getline(pilotosCountry, myCountry);
@@ -449,10 +451,11 @@ int main (){
 		Temp.setSex('M');
 		K.pbackVectorPiloto(Temp);
 	}
-	while(!carNames.eof()){
+	//while(!carNames.eof()){
+	for(cont2 = 0; cont2 < 11; cont2++){
 		int j;
 		getline(carNames, myCarName);
-		getline(carNames, myCarEngine);
+		getline(carEngines, myCarEngine);
 		getline(sponsorNames, mySponsorName);
 		getline(escuderias, myEscuderiaName);
 		sponsorProfit >> sponsorProfits;
@@ -486,4 +489,5 @@ int main (){
 	praseleccion();
 	return 0;
 }
+
 
