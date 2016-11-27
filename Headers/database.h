@@ -17,7 +17,6 @@ public:
 	Database();
 	char ingresarMasRpta();
 	char yaIngresoRpta();
-	bool ingresarMas(char rpta);
 	bool yaIngreso(char rpta);
 	int getNumPersonas();
 	void menuIngrPer();
