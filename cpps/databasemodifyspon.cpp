@@ -55,9 +55,13 @@ void DatabaseModifySpon::selecmodificacion(int i, int k, Patrocinadores p){
 void DatabaseModifySpon::modifySpon(){
 	int sponsor, selectData;
 	Database K; Patrocinadores miSponsor;
+	if (K.getNumSpon() == 0){
+		cout << "No hay datos para modificar. " << endl;
+	} else {
 	sponsor = chooseSpon();
 	selectData = selectDataSpon();
 	sponsor--;
 	miSponsor = K.getSponsorVector(sponsor);
 	selecmodificacion(selectData, sponsor, miSponsor);
+	}
 }
