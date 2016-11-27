@@ -167,7 +167,7 @@ void Database::menuIngrCoc(){
 	numCarros++;
 	storeCar.push_back(newCar);
 }
-Car ingrCocEscu(){
+Car Database::ingrCocEscu(){
 	Car newCar;
 	char* myName = myDB.askName();
 	char* myEngine = myDB.askEngine();
