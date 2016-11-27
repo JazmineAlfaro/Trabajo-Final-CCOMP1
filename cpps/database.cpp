@@ -251,13 +251,13 @@ void Database::menuIngrEsc(){
 			} else if (i<= numSponsors){
 				newEscuderia.setSponsor(storeSponsor[i-1]);
 			}
-		}while(ingresarMas(ingresarMasRpta()));
+		}while(yaIngreso(ingresarMasRpta()));
 	} else{
 		do{
 			cout << "Ingresando auspiciadores: " << endl;
 			newEscuderia.setSponsor(ingrSponEscu());
 		}
-		while(ingresarMas(ingresarMasRpta()));
+		while(yaIngreso(ingresarMasRpta()));
 	}
 	//agregando pilotos a peticion del usuario
 	if(yaIngreso(yaIngresoRpta())){
