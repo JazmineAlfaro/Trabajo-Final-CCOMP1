@@ -2,17 +2,16 @@
 #include <string.h>
 #include <iostream>
 using namespace std;
-char* DatabaseAsk::askName(){
-	char *name;
-	name = new char[15];
+string DatabaseAsk::askName(){
+	string name;
 	cout<<"Ingrese un nombre: "<<endl;
 	cin>>name;
 	return name;
 }
 
-char* DatabaseAsk::askLName(){
-	char *name;
-	name = new char[15];
+string DatabaseAsk::askLName(){
+	string name;
+
 	cout<<"Ingrese un apellido: "<<endl;
 	cin>>name;
 	return name;
@@ -30,12 +29,12 @@ char DatabaseAsk::askSex(){
 	return sex;
 }
 
-char* DatabaseAsk::askCountry(){
-	char *name;
-	name = new char[15];
+string DatabaseAsk::askCountry(){
+	string country;
 	cout<<"Ingrese su pais: "<<endl;
-	cin>>name;
-	return name;
+	cin>>country;
+	return country;
+	
 }
 //CHAU PERSONA
 //Piloto
@@ -61,9 +60,8 @@ int DatabaseAsk::askNumber(){
 
 //CHAU PILOTO
 //Carro
-char* DatabaseAsk::askEngine(){
-	char *engine;
-	engine = new char[10];
+string DatabaseAsk::askEngine(){
+	string engine;
 	cout<<"Ingrese su motor: "<<endl;
 	cin>>engine;
 	return engine;
