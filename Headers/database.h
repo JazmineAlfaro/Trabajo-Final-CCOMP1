@@ -53,4 +53,7 @@ public:
 	void deleteVectorSponsor(int i);
 	void deleteVectorEscuderia(int i);
 	void pbackVectorPiloto(Piloto P);
+	void pbackVectorCarro(Car C);
+	void pbackVectorSponsor(Patrocinadores P);
+	void pbackVectorEscuderia(Escuderia E);
 };
