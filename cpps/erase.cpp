@@ -40,7 +40,7 @@ int Erase::chooseEscuderia(){
 }
 int Erase::chooseSponsor(){
 	Database H; int i;
-	H.getCarro();
+	H.getSponsor();
 	cout << "Ingrese el numero del patrocinador que desea eliminar: " << endl;
 	cin >> i;
 	return i;
@@ -106,4 +106,5 @@ void Erase::eraseSponsor(){
 	i = chooseSponsor();
 	H.deleteVectorSponsor(i);
 }
+
 
