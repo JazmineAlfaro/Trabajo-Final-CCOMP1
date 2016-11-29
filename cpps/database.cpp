@@ -373,7 +373,7 @@ void Database::deleteVectorSponsor(int i){
 	for(j; j<numSponsors; j++)
 		temp.push_back(storeSponsor.at(j));
 	storeSponsor = temp;
-	numPilotos--;
+	numSponsors--;
 }
 void Database::deleteVectorEscuderia(int i){
 	int j = 0;
@@ -402,3 +402,4 @@ void Database::pbackVectorEscuderia(Escuderia E){
 	storeEscuderia.push_back(E);
 	numEscuderias++;
 }
+
