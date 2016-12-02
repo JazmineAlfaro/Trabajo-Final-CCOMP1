@@ -48,7 +48,8 @@ void DatabaseModifyEscu::agregarPiloto(Escuderia E, int i){
 	j = H.askNumber();
 	Driver = K.getPilotoVector(j-1);
 	} else {
-		Driver = K.ingrPilEscu();
+		K.menuIngrPil();
+		Driver = K.getPilotoVector(K.getNumPilotos()-1);
 	}
 	E.setPilotos(Driver);
 	K.modificarEscuderiaVector(E, i);
@@ -65,7 +66,8 @@ void DatabaseModifyEscu::agregarSponsor(Escuderia E, int i){
 	j = H.askNumber();
 	Sponsor = K.getSponsorVector(j-1);
 	} else {
-		Sponsor = K.ingrSponEscu();
+		K.menuIngrSpon();
+		Sponsor = K.getSponsorVector(K.getNumSpon()-1);
 	}
 	E.setSponsor(Sponsor);
 	K.modificarEscuderiaVector(E, i);
