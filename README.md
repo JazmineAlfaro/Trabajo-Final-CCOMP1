@@ -29,9 +29,9 @@ Seguir las instrucciones en pantalla.
 1. Nombre (sin espacios)
 2. Ingresos
 
-- Al ingresar una escuderia, se puede tener ingresado por lo menos: (tener en cuenta que si ya están ingresados los datos, se deben tener los 3 ya ingresados)
+- Al ingresar una escuderia, se puede tener ingresado por lo menos: (tener en cuenta que si ya están ingresados los datos, no es necesario tener los 3 ya ingresados)
 
-1. Un piloto.
+1. DOS pilotos.
 2. Un carro.
 3. Un patrocinador.
 
