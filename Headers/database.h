@@ -23,15 +23,12 @@ public:
 	void getPersona();
 	int getNumPilotos();
 	void menuIngrPil();
-	Piloto ingrPilEscu();
 	void getPiloto();
 	int getNumCarros();
 	void menuIngrCoc();
-	Car ingrCocEscu();
 	void getCarro();
 	int getNumSpon();
 	void menuIngrSpon();
-	Patrocinadores ingrSponEscu();
 	void getSponsor();
 	int getNumEscuderias();
 	void menuIngrEsc();
