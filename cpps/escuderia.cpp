@@ -71,23 +71,30 @@ Piloto Escuderia::getPiloto(int pos){
 void Escuderia::imprimirSponsors(){
 	int i;
 	Patrocinadores G;
+	if (numSponsorss == 0){
+		cout << "No hay patrocinadores." << endl;
+	} else {
 	for (i = 0; i<numSponsorss; i++){
 		cout << "Patrocinador " << i+1 << endl;
 		G = sponsors[i];
 		cout << G.getName() << endl;
+	}
 	}
 	
 }
 void Escuderia::imprimirPilotos(){
 	int i;
 	Piloto G;
+	if (numPilotoss == 0){
+		cout << "No hay pilotos." << endl;
+	} else {
 	for(i=0;i<numPilotoss; i++){
 		cout << "Piloto " << i+1 << endl;
 		G = pilotos[i];
 		cout << G.getname() << " " << G.getLastName() << endl;
 	}
+	}
 }
-
 
 
 
