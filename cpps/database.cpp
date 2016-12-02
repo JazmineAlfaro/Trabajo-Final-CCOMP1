@@ -108,29 +108,6 @@ void Database::menuIngrPil(){
 	numPilotos++;
 	storePiloto.push_back(newPiloto);
 }
-Piloto Database::ingrPilEscu(){
-	Piloto newPiloto;
-	string name;
-	name = myDB.askName();
-	string lname;
-	lname = myDB.askLName();
-	int age = myDB.askAge();
-	char sex = myDB.askSex();
-	string country = myDB.askCountry();
-	int points = myDB.askPoints();
-	int pay = myDB.askPay();
-	int number = myDB.askNumber();
-	newPiloto.setAge(age);
-	newPiloto.setCountry(country);
-	newPiloto.setLastName(lname);
-	newPiloto.setName(name);
-	newPiloto.setNumber(number);
-	newPiloto.setPay(pay);
-	newPiloto.setSex(sex);
-	numPilotos++;
-	storePiloto.push_back(newPiloto);
-	return newPiloto;
-}
 void Database::getPiloto(){
 	int i;
 	Piloto Get;
@@ -161,16 +138,6 @@ void Database::menuIngrCoc(){
 	numCarros++;
 	storeCar.push_back(newCar);
 }
-Car Database::ingrCocEscu(){
-	Car newCar;
-	string myName = myDB.askName();
-	string myEngine = myDB.askEngine();
-	newCar.setEngine(myEngine);
-	newCar.setName(myName);
-	numCarros++;
-	storeCar.push_back(newCar);
-	return newCar;
-}
 void Database::getCarro(){
 	int i;
 	Car Get;
@@ -195,16 +162,6 @@ void Database::menuIngrSpon(){
 	newSponsor.setName(myName);
 	numSponsors++;
 	storeSponsor.push_back(newSponsor);
-}
-Patrocinadores Database::ingrSponEscu(){
-	Patrocinadores newSponsor;
-	string myName = myDB.askName();
-	int myIngresos = myDB.askIngresos();
-	newSponsor.setIngresos(myIngresos);
-	newSponsor.setName(myName);
-	numSponsors++;
-	storeSponsor.push_back(newSponsor);
-	return newSponsor;
 }
 void Database::getSponsor(){
 	int i;
@@ -402,4 +359,3 @@ void Database::pbackVectorEscuderia(Escuderia E){
 	storeEscuderia.push_back(E);
 	numEscuderias++;
 }
-
