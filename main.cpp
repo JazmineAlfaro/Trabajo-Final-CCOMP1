@@ -131,11 +131,11 @@ void menuIngCoc(){
 /*ingresar escuderias
 */
 void instruccionesIngEsc(){
-	cout << "Recuerde que una escuderia debe tener las siguientes características: " << endl;
+	cout << "Recuerde que una escuderia debe tener las siguientes caracteristicas: " << endl;
 	cout << "Nombre" << endl;
 	cout << "Pilotos" << endl;
 	cout << "Patrocinadores" << endl;
-	cout << "Y estos ya deben haber sido ingresados" << endl;
+	cout << "Y estos pueden ya haber sido ingresados, pero no es necesario" << endl;
 }
 void menuIngEsc(){
 	instruccionesIngEsc();
