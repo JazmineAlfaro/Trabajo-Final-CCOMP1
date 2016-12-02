@@ -184,6 +184,7 @@ void Database::menuIngrEsc(){
 	Escuderia newEscuderia;
 	string myName = myDB.askName();
 	newEscuderia.setName(myName);
+	cout << "Usted va a agregar un carro." << endl;
 	if(yaIngreso(yaIngresoRpta())){
 		//agregando carro
 		getCarro();
@@ -195,9 +196,11 @@ void Database::menuIngrEsc(){
 			newEscuderia.setCarro(storeCar[i-1]); 
 		}
 	} else {
-		newEscuderia.setCarro(ingrCocEscu());
+		menuIngrCoc();
+		newEscuderia.setCarro(storeCar[numCarros-1]);
 	}
 	//agregando auspiciadores a peticion del usuario
+	cout << "Usted va a agregar patrocinadores." << endl;
 	if(yaIngreso(yaIngresoRpta())){
 		do{
 			getSponsor();
@@ -212,11 +215,13 @@ void Database::menuIngrEsc(){
 	} else{
 		do{
 			cout << "Ingresando auspiciadores: " << endl;
-			newEscuderia.setSponsor(ingrSponEscu());
+			menuIngrSpon();
+			newEscuderia.setSponsor(storeSponsor[numSponsors-1]);
 		}
 		while(yaIngreso(ingresarMasRpta()));
 	}
 	//agregando pilotos a peticion del usuario
+	cout << "Usted va a agregar pilotos." << endl;
 	if(yaIngreso(yaIngresoRpta())){
 		do{
 			getPiloto();
@@ -231,10 +236,11 @@ void Database::menuIngrEsc(){
 		}while(j<2); //2 pilotos por escuderia
 	} else {
 		do{
-			cout << "Ingresando pilotos: " << endl;
+			cout << "Ingresando pilotos: (debe ingresar 2)" << endl;
 			cout << "Piloto: " << j+1 << endl;	
 			j++;
-			newEscuderia.setPilotos(ingrPilEscu());
+			menuIngrPil();
+			newEscuderia.setPilotos(storePiloto[numPilotos-1]);
 		}while(j<2);
 	}
 	numEscuderias++;
