@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include "persona.h"
 #include "piloto.h"
 #include "carro.h"
@@ -9,64 +8,78 @@
 using namespace std;
 
 Escuderia::Escuderia(){
-	vector<Piloto> newVectorP;
-	vector<Patrocinadores> newVectorS;
+	Piloto *newArrayP;
+	Patrocinadores *newArrayS;
 	Car carrito;
+	newArrayP = new Piloto[0];
+	newArrayS = new Patrocinadores[0];
 	this->numPilotoss = 0;
 	this->numSponsorss = 0;
-	this->sponsors = newVectorS;
-	this->pilotos = newVectorP;
+	this->sponsors = newArrayS;
+	this->pilotos = newArrayP;
 	this->carro = carrito;
 	this->name = " ";
 	
 }
 void Escuderia::setPilotos(Piloto Driver){
-	pilotos.push_back(Driver);
+	Piloto *temp;
+	int i;
+	temp = new Piloto[numPilotoss+1];
+	for(i = 0; i<numPilotoss; i++)
+		temp[i] = pilotos[i];
+	temp[i] = Driver;
+	delete [] pilotos;
+	this->pilotos = temp;
 	numPilotoss++;
 }
 
 void Escuderia::eliminarPilotos(int i){
-	vector<Piloto> temp;
+	Piloto *temp;
+	temp = new Piloto[numPilotoss-1];
 	int j;
 	for(j = 0; j < i; j++)
-		temp.push_back(pilotos.at(j));
+		temp[j] = pilotos[j];
 	j++;
 	for(j; j<numPilotoss; j++)
-		temp.push_back(pilotos.at(j));
+		temp[j-1] = pilotos[j];
 	numPilotoss--;
-	this->pilotos = temp; 
+	delete [] pilotos;
+	this->pilotos = temp;
 }
 void Escuderia::setSponsor(Patrocinadores Sponsor){
-	sponsors.push_back(Sponsor);
+	Patrocinadores *temp;
+	int i;
+	temp = new Patrocinadores[numSponsorss+1];
+	for(i = 0; i<numSponsorss; i++)
+		temp[i] = sponsors[i];
+	temp[i] = Sponsor;
+	delete [] sponsors;
+	this->sponsors = temp;
 	numSponsorss++;
 }
 void Escuderia::eliminarSponsors(int i){
-	vector<Patrocinadores> temp;
+	Patrocinadores *temp;
+	temp = new Patrocinadores[numSponsorss-1];
 	int j;
-	for(j = 0; j<i; j++)
-		temp.push_back(sponsors.at(j));
+	for(j = 0; j < i; j++)
+		temp[j] = sponsors[j];
 	j++;
 	for(j; j<numSponsorss; j++)
-		temp.push_back(sponsors.at(j));
+		temp[j-1] = sponsors[j];
 	numSponsorss--;
+	delete [] sponsors;
 	this->sponsors = temp; 
 }
 void Escuderia::setName(string neim){this->name = neim;}
-void Escuderia::setMecanicos(Persona Mecanico){;}
 void Escuderia::setCarro(Car car){this->carro = car;}
 string Escuderia::getName(){return name;}
 Car Escuderia::getCarro(){return carro;}
 Patrocinadores Escuderia::getSponsor(int pos){
-	int i;
-	for (i = 0; i<pos+1; i++)
-		;
-	return sponsors[i-1];
+	return sponsors[pos-1];
 }
 Piloto Escuderia::getPiloto(int pos){
-	int i;
-	for (i = 0; i<pos+1; i++)
-		;
-	return pilotos[i-1];
+	Piloto Temp = pilotos[pos-1];
+	return Temp;
 }
 void Escuderia::imprimirSponsors(){
 	int i;
@@ -95,6 +108,5 @@ void Escuderia::imprimirPilotos(){
 	}
 	}
 }
-
 
 
